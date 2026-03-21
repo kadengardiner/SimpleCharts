@@ -75,7 +75,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 8px;
+  gap: 20px;
   flex: 1;
   min-height: 0;
 }
@@ -119,6 +119,7 @@ body {
   font-size: 1.4rem;
   font-weight: 900;
   color: #000;
+  transition: transform 0.2s ease;
 }
 
 .tile-cta-img {
@@ -128,19 +129,17 @@ body {
   border: 2px solid #000;
 }
 
-@keyframes soft-pulse {
-  0%, 100% { background: #fff; color: #222; }
-  50%       { background: #afafaf; color: #222; }
+
+.tile-cta-img {
+  transition: transform 0.2s ease;
 }
 
-@keyframes arrow-pulse {
-  0%, 100% { transform: scale(1);    filter: brightness(1); }
-  50%       { transform: scale(1.08); filter: brightness(1.2); }
+.tile-cta-img:hover {
+  transform: scale(1.04);
 }
 
-.tile:has(.tile-cta-img:hover) .tile-arrow,
-.tile:has(.tile-cta-img:hover) .tile-cta-img {
-  animation: arrow-pulse 1.8s ease-in-out infinite;
+.tile:has(.tile-cta-img:hover) .tile-arrow {
+  transform: scale(1.04);
 }
 
 /* ── Sidebar ── */
