@@ -14,7 +14,7 @@ function Tile({ label, color, onClick }) {
     <button className="tile" style={{ backgroundColor: color }} onClick={onClick}>
       <span className="tile-label">{label}</span>
       <span className="tile-arrow">↓</span>
-      <span className="tile-cta">→ CLICK ME! ←</span>
+      <img className="tile-cta-img" src="/scheduleaptButton.png" alt="Schedule Appointment" />
     </button>
   )
 }
