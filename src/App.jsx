@@ -1,120 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const tiles = [
+  { label: 'Schedule\nAppointment',      color: '#6a9bc3', id: 'schedule' },
+  { label: 'Test Results',               color: '#5a9e5a', id: 'results'  },
+  { label: 'View Medications',           color: '#c8c84a', id: 'meds'     },
+  { label: 'View Billing',               color: '#c05050', id: 'billing'  },
+  { label: 'View Messages',              color: '#d4844a', id: 'messages' },
+  { label: 'View Upcoming\nAppointment', color: '#c060b0', id: 'upcoming' },
+]
 
+function Tile({ label, color, onClick }) {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <button className="tile" style={{ backgroundColor: color }} onClick={onClick}>
+      <span className="tile-label">{label}</span>
+      <span className="tile-arrow">↓</span>
+      <span className="tile-cta">→ CLICK ME! ←</span>
+    </button>
+  )
+}
 
-      <div className="ticks"></div>
+function SidebarButton({ label, onClick }) {
+  return (
+    <button className="sidebar-btn" onClick={onClick}>
+      <span className="sidebar-label">{label}</span>
+    </button>
+  )
+}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+function App() {
+  return (
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <h1 className="greeting">Hello John Smith!</h1>
+        <div className="header-right">
+          <span className="brand-name">Simple Charts</span>
+          <input className="search-box" type="text" placeholder="Question? Type it here!" />
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* Main content */}
+      <div className="content">
+        <div className="tile-grid">
+          {tiles.map((t) => (
+            <Tile key={t.id} label={t.label} color={t.color} onClick={() => {}} />
+          ))}
+        </div>
+
+        <aside className="sidebar">
+          <SidebarButton label="Click to Access Profile"      onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book"   onClick={() => {}} />
+          <SidebarButton label="Click to Access Address book" onClick={() => {}} />
+        </aside>
+      </div>
+    </div>
   )
 }
 
