@@ -222,22 +222,51 @@ body {
 }
 
 @media (max-width: 600px) {
+  .app {
+    height: auto;
+    min-height: 100%;
+  }
+
+  .header {
+    height: auto;
+    padding: 8px 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .greeting {
+    font-size: 1.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 55vw;
+  }
+
+  .header-logo {
+    display: none;
+  }
+
+  .header-right {
+    display: none;
+  }
+
   .mobile-menu-btn {
     display: block;
-    margin-left: auto;
-    padding: 8px 16px;
-    font-size: 1.2rem;
+    padding: 6px 14px;
+    font-size: 1rem;
     font-weight: bold;
     background: #b0a8a0;
     border: 2px solid #888;
     border-radius: 6px;
     cursor: pointer;
+    margin-left: auto;
   }
 
   .mobile-dropdown {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 6px;
     padding: 8px;
     background: #c8c0b8;
     border-bottom: 2px solid #aaa;
@@ -245,14 +274,22 @@ body {
 
   .mobile-dropdown .sidebar-btn {
     flex: 1;
-    font-size: 0.75rem;
-    padding: 8px 4px;
+    font-size: 0.7rem;
+    padding: 6px 4px;
+    min-height: 0;
   }
 
   .mobile-dropdown .sidebar-icon,
   .mobile-dropdown .sidebar-icon-address {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .content {
+    flex-direction: column;
+    padding: 6px;
+    gap: 6px;
+    overflow-y: auto;
   }
 
   .sidebar {
@@ -261,18 +298,29 @@ body {
 
   .tile-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, auto);
+    grid-template-rows: repeat(6, 38vw);
+    gap: 6px;
   }
 
   .tile {
-    min-height: 120px;
+    height: 38vw;
+    overflow: hidden;
+    padding: 6px;
+    gap: 4px;
   }
 
   .tile-label {
-    font-size: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.2;
   }
 
-  .header-logo {
-    display: none;
+  .tile-arrow {
+    font-size: 0.6rem;
+  }
+
+  .tile-cta-img {
+    width: 55%;
+    height: 14vw;
+    object-fit: fill;
   }
 }
