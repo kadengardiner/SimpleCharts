@@ -1,12 +1,14 @@
 import './App.css'
 
+const base = import.meta.env.BASE_URL
+
 const tiles = [
-  { label: 'Schedule\nAppointment',      color: '#6a9bc3', id: 'schedule', ctaImg: '/scheduleaptButton.png'    },
-  { label: 'Test Results',               color: '#5a9e5a', id: 'results',  ctaImg: '/testResultsclickme.png'   },
-  { label: 'View Medications',           color: '#c8c84a', id: 'meds',     ctaImg: '/viewMedicationClickMe.png' },
-  { label: 'View Billing',               color: '#c05050', id: 'billing',  ctaImg: '/viewBillingClickMe.png'              },
-  { label: 'View Messages',              color: '#d4844a', id: 'messages', ctaImg: '/viewMessageClickMe.png'              },
-  { label: 'View Upcoming\nAppointment', color: '#c060b0', id: 'upcoming', ctaImg: '/viewUpcomingAppointmentClickMe.png'   },
+  { label: 'Schedule\nAppointment',      color: '#6a9bc3', id: 'schedule', ctaImg: `${base}scheduleaptButton.png`           },
+  { label: 'Test Results',               color: '#5a9e5a', id: 'results',  ctaImg: `${base}testResultsclickme.png`          },
+  { label: 'View Medications',           color: '#c8c84a', id: 'meds',     ctaImg: `${base}viewMedicationClickMe.png`       },
+  { label: 'View Billing',               color: '#c05050', id: 'billing',  ctaImg: `${base}viewBillingClickMe.png`          },
+  { label: 'View Messages',              color: '#d4844a', id: 'messages', ctaImg: `${base}viewMessageClickMe.png`          },
+  { label: 'View Upcoming\nAppointment', color: '#c060b0', id: 'upcoming', ctaImg: `${base}viewUpcomingAppointmentClickMe.png` },
 ]
 
 function Tile({ label, color, ctaImg, onClick }) {
@@ -34,7 +36,7 @@ function App() {
       {/* Header */}
       <header className="header">
         <h1 className="greeting">Hello John Smith!</h1>
-        <img className="header-logo" src="/logo.png" alt="Simple Charts Logo" />
+        <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" />
         <div className="header-right">
           <span className="brand-name">Simple Charts</span>
           <input className="search-box" type="text" placeholder="Question? Type it here!" />
@@ -50,9 +52,9 @@ function App() {
         </div>
 
         <aside className="sidebar">
-          <SidebarButton label="Click to Access Profile" icon="/profileicon.png" onClick={() => {}} />
-          <SidebarButton label="Click to Access Phone book" icon="/phonebookIcon.png" iconClass="sidebar-icon-address" onClick={() => {}} />
-          <SidebarButton label="Click to Access Address book" icon="/adressbookIcon.png" iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
         </aside>
       </div>
     </div>
