@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 const base = import.meta.env.BASE_URL
@@ -31,6 +32,8 @@ function SidebarButton({ label, icon, iconClass, onClick }) {
 }
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <div className="app">
       {/* Header */}
@@ -41,7 +44,17 @@ function App() {
           <span className="brand-name">Simple Charts</span>
           <input className="search-box" type="text" placeholder="Question? Type it here!" />
         </div>
+        <button className="mobile-menu-btn" onClick={() => setMenuOpen(o => !o)}>☰ Menu</button>
       </header>
+
+      {/* Mobile dropdown */}
+      {menuOpen && (
+        <div className="mobile-dropdown">
+          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+        </div>
+      )}
 
       {/* Main content */}
       <div className="content">
