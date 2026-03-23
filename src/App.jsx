@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import ProfileScreen from './ProfileScreen'
+import PhoneBookScreen from './PhoneBookScreen'
+import AddressBookScreen from './AddressBookScreen'
 
 const base = import.meta.env.BASE_URL
 
@@ -53,8 +55,8 @@ function App() {
       {menuOpen && (
         <div className="mobile-dropdown">
           <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => { setCurrentPage('profile'); setMenuOpen(false) }} />
-          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
-          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('phonebook'); setMenuOpen(false) }} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('addressbook'); setMenuOpen(false) }} />
         </div>
       )}
 
@@ -63,13 +65,19 @@ function App() {
         <div className="tile-grid">
           {currentPage === 'home'
             ? tiles.map((t) => <Tile key={t.id} label={t.label} color={t.color} ctaImg={t.ctaImg} onClick={() => {}} />)
-            : <ProfileScreen onBack={() => setCurrentPage('home')} />}
+            : currentPage === 'profile'
+              ? <ProfileScreen onBack={() => setCurrentPage('home')} />
+              : currentPage === 'phonebook'
+                ? <PhoneBookScreen onBack={() => setCurrentPage('home')} />
+                : currentPage === 'addressbook'
+                  ? <AddressBookScreen onBack={() => setCurrentPage('home')} />
+                  : null}
         </div>
 
         <aside className="sidebar">
           <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => setCurrentPage('profile')} />
-          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
-          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => setCurrentPage('phonebook')} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => setCurrentPage('addressbook')} />
         </aside>
       </div>
     </div>
