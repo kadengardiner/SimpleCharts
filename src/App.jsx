@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import ProfileScreen from './ProfileScreen'
 
 const base = import.meta.env.BASE_URL
 
@@ -33,6 +34,7 @@ function SidebarButton({ label, icon, iconClass, onClick }) {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState('home')
 
   return (
     <div className="app">
@@ -50,7 +52,7 @@ function App() {
       {/* Mobile dropdown */}
       {menuOpen && (
         <div className="mobile-dropdown">
-          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => {}} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => { setCurrentPage('profile'); setMenuOpen(false) }} />
           <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
           <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
         </div>
@@ -59,13 +61,13 @@ function App() {
       {/* Main content */}
       <div className="content">
         <div className="tile-grid">
-          {tiles.map((t) => (
-            <Tile key={t.id} label={t.label} color={t.color} ctaImg={t.ctaImg} onClick={() => {}} />
-          ))}
+          {currentPage === 'home'
+            ? tiles.map((t) => <Tile key={t.id} label={t.label} color={t.color} ctaImg={t.ctaImg} onClick={() => {}} />)
+            : <ProfileScreen onBack={() => setCurrentPage('home')} />}
         </div>
 
         <aside className="sidebar">
-          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => {}} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => setCurrentPage('profile')} />
           <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
           <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
         </aside>
