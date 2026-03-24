@@ -1,14 +1,12 @@
 import { useState } from 'react'
 
-const base = import.meta.env.BASE_URL
-
 const defaultEntries = [
   { id: 1, label: 'Primary Care Office', value: '1 Place Name Rd, MA, 01854' },
   { id: 2, label: 'Nearest Hospital',    value: '1 Place Name Rd, MA, 01854' },
   { id: 3, label: 'Blood Work Center',   value: '2 Place Name St, MA, 01854' },
 ]
 
-export default function AddressBookScreen({ onBack }) {
+export default function AddressBookScreen() {
   const [entries, setEntries] = useState(defaultEntries)
   const [newLabel, setNewLabel] = useState('')
   const [newValue, setNewValue] = useState('')
@@ -54,7 +52,6 @@ export default function AddressBookScreen({ onBack }) {
           <button className="book-add-btn" onClick={addEntry}>+ Add</button>
         </div>
       </div>
-      <img src={`${base}backbtn.png`} alt="Back" className="inline-back-btn" onClick={onBack} />
     </div>
   )
 }

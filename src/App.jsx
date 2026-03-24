@@ -53,7 +53,7 @@ function App() {
                 <img className="header-action-btn" src={`${base}printbtn.jpg`} alt="Print" onClick={() => window.print()} />
                 <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} />
               </div>
-            : <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" />}
+            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} />}
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" />}
         <div className="header-right">
           <span className="brand-name">Simple Charts</span>
@@ -68,20 +68,12 @@ function App() {
           <SidebarButton label="Click to Access Profile" icon={`${base}Profile.svg`} onClick={() => { setCurrentPage('profile'); setMenuOpen(false) }} />
           <SidebarButton label="Click to Access Phone book" icon={`${base}Phone_book.svg`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('phonebook'); setMenuOpen(false) }} />
           <SidebarButton label="Click to Access Address book" icon={`${base}Address_book.svg`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('addressbook'); setMenuOpen(false) }} />
-          {(currentPage === 'profile' || currentPage === 'phonebook' || currentPage === 'addressbook') && (
-            <button className="mobile-back-btn" onClick={() => { setCurrentPage('home'); setMenuOpen(false) }}>
-              <img src={`${base}backbtn.png`} alt="Back" />
-            </button>
-          )}
         </div>
       )}
 
       {/* Main content */}
       <div className={`content ${guidePageData[currentPage] ? 'guide-content-shell' : ''}`}>
         <div className={currentPage === 'home' ? 'tile-grid' : 'page-stage'}>
-          {currentPage !== 'home' && !guidePageData[currentPage] && (
-            <img src={`${base}backbtn.png`} alt="Back" className="back-btn" onClick={() => setCurrentPage('home')} />
-          )}
           {guidePageData[currentPage] && (
             <div className="guide-action-bar">
               <img src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} />
