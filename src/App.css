@@ -816,7 +816,8 @@ body {
   margin-bottom: 12px;
   color: #f6f6f6;
   font-family: serif;
-  text-shadow: -2px -2px 0 #555, 2px -2px 0 #555, -2px 2px 0 #555, 2px 2px 0 #555;
+  -webkit-text-stroke: 1px #555;
+  /* text-shadow: -2px -2px 0 #555, 2px -2px 0 #555, -2px 2px 0 #555, 2px 2px 0 #555; */
   flex-shrink: 0;
 }
 
