@@ -843,14 +843,14 @@ body {
 
 .guide-step-row {
   display: grid;
-  grid-template-columns: clamp(24px, 2.5vw, 40px) clamp(24px, 2.5vw, 40px) 1fr;
+  grid-template-columns: clamp(32px, 3.5vw, 56px) clamp(28px, 2.8vw, 44px) 1fr;
   gap: 10px;
-  align-items: start;
+  align-items: center;
   margin-bottom: 14px;
 }
 
 .guide-step-number {
-  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-size: clamp(1.4rem, 2.5vw, 3rem);
   line-height: 1;
   text-align: center;
 }
@@ -883,7 +883,7 @@ body {
 
 .guide-step-text {
   line-height: 1.4;
-  font-size: clamp(1.3rem, 2.2vw, 2.4rem);
+  font-size: clamp(1rem, 1.8vw, 2rem);
 }
 
 .guide-center-panel {
