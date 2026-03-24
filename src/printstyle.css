@@ -1,0 +1,61 @@
+@media print{
+    .guide-steps-panel, .guide-detail-card-print{
+        position: absolute;
+        left: 0;
+        display: block !important;
+        width: 100%;
+        border: none !important;
+        border-top: 1px solid black !important;
+        background: none !important;
+    }
+    .guide-steps-panel{
+        top: 80px;
+    }
+    .guide-detail-card-print{
+        padding-top: 0%;
+        top: 100%;
+    }
+    .guide-steps-panel div{
+        line-height: 1 !important;
+        font-size: 1.5em;
+    }
+
+    .guide-detail-card-print div {
+        line-height: 1.5 !important;
+        font-size: 1.25em !important;
+    }
+
+    .guide-step-number::after{
+        content: "\25A1" !important;
+        padding-left: 10px;
+    }
+
+    .guide-step-row{
+        margin-bottom: 1.5em !important;
+    }
+    .header, .sidebar, .guide-bottom-row, .guide-grid-card{
+        display: none !important;
+    }
+
+    .guide-main{
+        border: none !important;
+        background: none !important;
+    }
+
+    .guide-title{
+        text-shadow: none !important;
+        color: black !important;
+        font-size: 30px !important;
+    }
+    .guide-step-check{
+        visibility: hidden;
+    }
+
+    body{
+        background: none !important;
+    }
+
+    .guide-detail-card {
+        display: none;
+    }
+}

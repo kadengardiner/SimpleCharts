@@ -246,6 +246,21 @@ body {
   display: none;
 }
 
+.guide-detail-card-print {
+    display: none;
+}
+
+.print-button{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px;
+}
+
+.printer-icon{
+    width: 80%;
+}
+
 @media (max-width: 600px) {
   .app {
     height: 100%;
@@ -416,6 +431,11 @@ body {
     width: 70px;
     height: 70px;
   }
+
+  .print-button{
+    position: static;
+    padding: 10px;
+}
 }
 
 /* ── Phone Book / Address Book ── */
@@ -697,6 +717,7 @@ body {
   padding: 12px 12px 8px;
   min-height: 0;
   overflow: hidden;
+  position: relative;
 }
 
 .guide-step-row {
@@ -832,7 +853,7 @@ body {
   cursor: pointer;
 }
 
-.guide-home-label {
+.guide-home-label, .print-button {
   font-weight: bold;
   text-align: center;
 }
