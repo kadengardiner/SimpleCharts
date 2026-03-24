@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 const base = import.meta.env.BASE_URL;
 
 
-export default function GuidePage({ page, onBack, onOpenProfile, onOpenPhonebook, onOpenAddressbook }) {
+export default function GuidePage({ page, onBack }) {
   const [checkedSteps, setCheckedSteps] = useState(Array(page.steps.length).fill(false));
   const [activeStep, setActiveStep] = useState(1);
 
@@ -69,7 +69,7 @@ export default function GuidePage({ page, onBack, onOpenProfile, onOpenPhonebook
               <div className="guide-detail-text">{activeContent.text}</div>
             </div>
 
-            <div className="guide-bottom-row desktop-guide-bottom-row">
+            <div className="guide-bottom-row">
               <button className="guide-home-link" onClick={onBack}>CLICK TO GO BACK HOME →</button>
               <button className="guide-home-card" onClick={onBack} aria-label="Go home">
                 <div className="guide-home-label">Click ME!</div>
@@ -80,20 +80,6 @@ export default function GuidePage({ page, onBack, onOpenProfile, onOpenPhonebook
         </div>
       </div>
 
-      <div className="guide-mobile-bottom-nav">
-        <button className="guide-mobile-nav-btn" onClick={onBack} aria-label="Go home">
-          <img src={`${base}homeicon.png`} alt="" className="guide-mobile-nav-icon guide-mobile-home-icon" />
-        </button>
-        <button className="guide-mobile-nav-btn" onClick={onOpenProfile} aria-label="Open profile">
-          <img src={`${base}profileicon.png`} alt="" className="guide-mobile-nav-icon" />
-        </button>
-        <button className="guide-mobile-nav-btn" onClick={onOpenPhonebook} aria-label="Open phone book">
-          <img src={`${base}phonebookIcon.png`} alt="" className="guide-mobile-nav-icon" />
-        </button>
-        <button className="guide-mobile-nav-btn" onClick={onOpenAddressbook} aria-label="Open address book">
-          <img src={`${base}adressbookIcon.png`} alt="" className="guide-mobile-nav-icon" />
-        </button>
-      </div>
     </div>
   );
 }
