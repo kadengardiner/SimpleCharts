@@ -4,12 +4,12 @@ import './App.css'
 const base = import.meta.env.BASE_URL
 
 const tiles = [
-  { label: 'Schedule\nAppointment',      color: '#6a9bc3', id: 'schedule', ctaImg: `${base}scheduleaptButton.png`           },
-  { label: 'Test Results',               color: '#5a9e5a', id: 'results',  ctaImg: `${base}testResultsclickme.png`          },
-  { label: 'View Medications',           color: '#c8c84a', id: 'meds',     ctaImg: `${base}viewMedicationClickMe.png`       },
-  { label: 'View Billing',               color: '#c05050', id: 'billing',  ctaImg: `${base}viewBillingClickMe.png`          },
-  { label: 'View Messages',              color: '#d4844a', id: 'messages', ctaImg: `${base}viewMessageClickMe.png`          },
-  { label: 'View Upcoming\nAppointment', color: '#c060b0', id: 'upcoming', ctaImg: `${base}viewUpcomingAppointmentClickMe.png` },
+  { label: 'Schedule\nAppointment',      color: 'var(--ScheduleAppt)', id: 'schedule', ctaImg: `${base}scheduleaptButton.png`           },
+  { label: 'Test Results',               color: 'var(--TestResults)', id: 'results',  ctaImg: `${base}testResultsclickme.png`          },
+  { label: 'View Medications',           color: 'var(--ViewMeds)', id: 'meds',     ctaImg: `${base}viewMedicationClickMe.png`       },
+  { label: 'View Billing',               color: 'var(--ViewBills)', id: 'billing',  ctaImg: `${base}viewBillingClickMe.png`          },
+  { label: 'View Messages',              color: 'var(--ViewMessages)', id: 'messages', ctaImg: `${base}viewMessageClickMe.png`          },
+  { label: 'View Upcoming\nAppointment', color: 'var(--ViewAppts)', id: 'upcoming', ctaImg: `${base}viewUpcomingAppointmentClickMe.png` },
 ]
 
 function Tile({ label, color, ctaImg, onClick }) {
@@ -50,9 +50,9 @@ function App() {
       {/* Mobile dropdown */}
       {menuOpen && (
         <div className="mobile-dropdown">
-          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => {}} />
-          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
-          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}Profile.svg`} onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}Phone_book.svg`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}Address_book.svg`} iconClass="sidebar-icon-address" onClick={() => {}} />
         </div>
       )}
 
@@ -65,9 +65,9 @@ function App() {
         </div>
 
         <aside className="sidebar">
-          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => {}} />
-          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
-          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}Profile.svg`} onClick={() => {}} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}Phone_book.svg`} iconClass="sidebar-icon-address" onClick={() => {}} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}Address_book.svg`} iconClass="sidebar-icon-address" onClick={() => {}} />
         </aside>
       </div>
     </div>

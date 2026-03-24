@@ -1,3 +1,13 @@
+:root{
+    --ScheduleAppt: #6a9bc3;
+    --TestResults: #5a9e5a;
+    --ViewMeds: #c8c84a;
+    --ViewBills: #c05050;
+    --ViewMessages: #d4844a;
+    --ViewAppts: #c060b0;
+    --LogoColor: #8B0000;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -52,7 +62,8 @@ body {
 }
 
 .brand-name {
-  color: #e05050;
+  color: var(--LogoColor);
+  /* color: #e05050; */
   font-weight: bold;
   font-size: clamp(0.9rem, 5.5vh, 4rem);
   font-family: sans-serif;
