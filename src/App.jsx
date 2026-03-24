@@ -56,9 +56,9 @@ function App() {
       {/* Mobile dropdown */}
       {menuOpen && (
         <div className="mobile-dropdown">
-          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => { setCurrentPage('profile'); setMenuOpen(false) }} />
-          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('phonebook'); setMenuOpen(false) }} />
-          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('addressbook'); setMenuOpen(false) }} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}Profile.svg`} onClick={() => { setCurrentPage('profile'); setMenuOpen(false) }} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}Phone_book.svg`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('phonebook'); setMenuOpen(false) }} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}Address_book.svg`} iconClass="sidebar-icon-address" onClick={() => { setCurrentPage('addressbook'); setMenuOpen(false) }} />
         </div>
       )}
 
@@ -85,9 +85,9 @@ function App() {
         </div>
 
         <aside className="sidebar">
-          <SidebarButton label="Click to Access Profile" icon={`${base}profileicon.png`} onClick={() => setCurrentPage('profile')} />
-          <SidebarButton label="Click to Access Phone book" icon={`${base}phonebookIcon.png`} iconClass="sidebar-icon-address" onClick={() => setCurrentPage('phonebook')} />
-          <SidebarButton label="Click to Access Address book" icon={`${base}adressbookIcon.png`} iconClass="sidebar-icon-address" onClick={() => setCurrentPage('addressbook')} />
+          <SidebarButton label="Click to Access Profile" icon={`${base}Profile.svg`} onClick={() => setCurrentPage('profile')} />
+          <SidebarButton label="Click to Access Phone book" icon={`${base}Phone_book.svg`} iconClass="sidebar-icon-address" onClick={() => setCurrentPage('phonebook')} />
+          <SidebarButton label="Click to Access Address book" icon={`${base}Address_book.svg`} iconClass="sidebar-icon-address" onClick={() => setCurrentPage('addressbook')} />
         </aside>
       </div>
     </div>
