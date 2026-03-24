@@ -407,6 +407,112 @@ body {
   }
 }
 
+/* ── Phone Book / Address Book ── */
+
+.book-list {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.book-row {
+  display: flex;
+  align-items: center;
+  background: #e0dbd7;
+  border: 2px solid #bbb;
+  border-radius: 6px;
+  padding: 10px 14px;
+  gap: 12px;
+}
+
+.book-label {
+  font-weight: bold;
+  font-size: clamp(0.85rem, 1.8vw, 1.3rem);
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+.book-value {
+  flex: 1;
+  font-size: clamp(0.85rem, 1.8vw, 1.3rem);
+  color: #333;
+}
+
+.book-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.book-delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.book-add-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.book-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 10px;
+  font-size: clamp(0.85rem, 1.6vw, 1.2rem);
+  font-family: inherit;
+  border: 2px solid #888;
+  border-radius: 4px;
+  background: #f7f4f2;
+}
+
+.book-add-btn {
+  padding: 8px 18px;
+  font-size: clamp(0.85rem, 1.6vw, 1.2rem);
+  font-family: inherit;
+  font-weight: bold;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.15s;
+}
+
+.book-add-btn:hover {
+  filter: brightness(1.1);
+}
+
+@media (max-width: 600px) {
+  .book-label {
+    min-width: 110px;
+    font-size: 0.85rem;
+  }
+
+  .book-value {
+    font-size: 0.85rem;
+  }
+
+  .book-add-form {
+    flex-direction: column;
+  }
+
+  .book-input,
+  .book-add-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
 /* Profile Page */
 
 .profile-screen {
