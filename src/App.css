@@ -108,6 +108,10 @@ body {
   font-family: sans-serif;
 }
 
+.guide-detail-card-print {
+    display: none;
+}
+
 /* ── App shell ── */
 .app {
   height: 100%;

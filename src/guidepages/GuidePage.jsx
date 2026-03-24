@@ -71,7 +71,14 @@ export default function GuidePage({ page }) {
                 <div className="guide-detail-text">{activeContent.text}</div>
               </div>
             )}
-
+            <div className="guide-detail-card-print" key={"guide-detail-card-print"}>
+                {Object.entries(page.details).map(([step, detail], index) => (
+                    <div className="guide-detail-print-container" key={"print-step" + index}>
+                        <div className="guide-detail-title" key={"print-title" + index}>Step {step}:</div>
+                        <div className="guide-detail-text" key={"print-text" + index}>{detail}</div> 
+                    </div>
+                ))}
+            </div>
           </section>
         </div>
 

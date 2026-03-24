@@ -1,12 +1,17 @@
 @media print{
+    *{
+        overflow: visible !important;
+    }
     .guide-steps-panel, .guide-detail-card-print{
         position: absolute !important;
-        left: 0;
+        left: 0 !important;
         display: block !important;
-        width: 100%;
+        width: 100% !important;
         border: none !important;
         border-top: 1px solid black !important;
         background: none !important;
+        overflow: visible !important;
+        min-height: 100% !important;
     }
     .guide-steps-panel{
         top: 80px;
@@ -33,7 +38,7 @@
     .guide-step-row{
         margin-bottom: 1.5em !important;
     }
-    .header, .sidebar, .guide-bottom-row, .guide-grid-card{
+    .header, .sidebar, .guide-bottom-row, .guide-grid-card, .guide-detail-card{
         display: none !important;
     }
 
@@ -55,13 +60,6 @@
         background: none !important;
     }
 
-    .guide-detail-card {
-        display: none;
-    }
-
-    .print-button{
-        display: none;
-    }
 
 
 }
