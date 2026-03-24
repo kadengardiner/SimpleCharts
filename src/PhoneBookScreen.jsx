@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-const base = import.meta.env.BASE_URL
-
 const defaultEntries = [
   { id: 1, label: 'Primary Care Office', value: 'xxx-xxx-xxxx' },
   { id: 2, label: 'Doctor',              value: 'xxx-xxx-xxxx' },
@@ -9,7 +7,7 @@ const defaultEntries = [
   { id: 4, label: 'Proxy',               value: 'xxx-xxx-xxxx' },
 ]
 
-export default function PhoneBookScreen({ onBack }) {
+export default function PhoneBookScreen() {
   const [entries, setEntries] = useState(defaultEntries)
   const [newLabel, setNewLabel] = useState('')
   const [newValue, setNewValue] = useState('')
@@ -27,7 +25,6 @@ export default function PhoneBookScreen({ onBack }) {
 
   return (
     <div className="profile-screen">
-      <img src={`${base}homeicon.png`} alt="Back" className="back-btn" onClick={onBack} style={{ cursor: 'pointer' }} />
 
       <h2 className="profile-title">My Phone Book</h2>
 

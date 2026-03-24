@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
-const base = import.meta.env.BASE_URL;
-
-export default function ProfileScreen({ onBack }) {
+export default function ProfileScreen() {
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [saved, setSaved] = useState({
@@ -62,7 +60,6 @@ export default function ProfileScreen({ onBack }) {
       </div>
 
       <button className="logout-btn">Logout</button>
-      <img src={`${base}homeicon.png`} alt="Back" className="back-btn" onClick={onBack} style={{ cursor: 'pointer' }} />
     </div>
   );
 }

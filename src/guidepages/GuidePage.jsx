@@ -1,13 +1,11 @@
 import { useMemo, useState } from 'react';
 
-const base = import.meta.env.BASE_URL;
-
-
-export default function GuidePage({ page, onBack }) {
+export default function GuidePage({ page }) {
   const [checkedSteps, setCheckedSteps] = useState(Array(page.steps.length).fill(false));
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(null);
 
   const activeContent = useMemo(() => {
+    if (activeStep === null) return null;
     if (activeStep === 'other') {
       return { title: 'Other Help', text: page.details.other };
     }
@@ -40,10 +38,6 @@ export default function GuidePage({ page, onBack }) {
                 <div className="guide-step-text">{step}</div>
               </div>
             ))}
-            <button
-              className="print-button"
-              onClick={function(){window.print()}}
-            >Print<br/>Instructions<br/><img src={`${base}printer.svg`} alt="print" className='printer-icon'/></button>
           </section>
 
           <section className="guide-center-panel">
@@ -68,27 +62,20 @@ export default function GuidePage({ page, onBack }) {
               </div>
             </div>
 
-            <div className="guide-detail-card">
-              <div className="guide-detail-title">{activeContent.title}</div>
-              <div className="guide-detail-text">{activeContent.text}</div>
-            </div>
-            <div className="guide-detail-card-print" key={"guide-detail-card-print"}>
-                {Object.entries(page.details).map(([step, detail], index) => (
-                    <div className="guide-detail-print-container" key={"print-step" + index}>
-                        <div className="guide-detail-title" key={"print-title" + index}>Step {step}:</div>
-                        <div className="guide-detail-text" key={"print-text" + index}>{detail}</div> 
-                    </div>
-                ))}
-            </div>
-            <div className="guide-bottom-row">
-              <button className="guide-home-link" onClick={onBack}>CLICK TO GO BACK HOME →</button>
-              <button className="guide-home-card" onClick={onBack} aria-label="Go home">
-                <div className="guide-home-label">Click ME!</div>
-                <img src={`${base}homeicon.png`} alt="" className="guide-home-icon-image" />
-              </button>
-            </div>
+            {activeContent && (
+              <div className="guide-detail-card">
+                <div className="guide-detail-header">
+                  <div className="guide-detail-title">{activeContent.title}</div>
+                  <button className="guide-detail-close" onClick={() => setActiveStep(null)}>✕</button>
+                </div>
+                <div className="guide-detail-text">{activeContent.text}</div>
+              </div>
+            )}
+
           </section>
         </div>
+
+
       </div>
 
     </div>
