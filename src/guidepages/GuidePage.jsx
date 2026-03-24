@@ -1,13 +1,11 @@
 import { useMemo, useState } from 'react';
 
-const base = import.meta.env.BASE_URL;
-
-
-export default function GuidePage({ page, onBack }) {
+export default function GuidePage({ page }) {
   const [checkedSteps, setCheckedSteps] = useState(Array(page.steps.length).fill(false));
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(null);
 
   const activeContent = useMemo(() => {
+    if (activeStep === null) return null;
     if (activeStep === 'other') {
       return { title: 'Other Help', text: page.details.other };
     }
@@ -64,20 +62,20 @@ export default function GuidePage({ page, onBack }) {
               </div>
             </div>
 
-            <div className="guide-detail-card">
-              <div className="guide-detail-title">{activeContent.title}</div>
-              <div className="guide-detail-text">{activeContent.text}</div>
-            </div>
+            {activeContent && (
+              <div className="guide-detail-card">
+                <div className="guide-detail-header">
+                  <div className="guide-detail-title">{activeContent.title}</div>
+                  <button className="guide-detail-close" onClick={() => setActiveStep(null)}>✕</button>
+                </div>
+                <div className="guide-detail-text">{activeContent.text}</div>
+              </div>
+            )}
 
-            <div className="guide-bottom-row">
-              <button className="guide-home-link" onClick={onBack}>CLICK TO GO BACK HOME →</button>
-              <button className="guide-home-card" onClick={onBack} aria-label="Go home">
-                <div className="guide-home-label">Click ME!</div>
-                <img src={`${base}homeicon.png`} alt="" className="guide-home-icon-image" />
-              </button>
-            </div>
           </section>
         </div>
+
+
       </div>
 
     </div>

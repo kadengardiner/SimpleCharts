@@ -27,7 +27,6 @@ export default function PhoneBookScreen({ onBack }) {
 
   return (
     <div className="profile-screen">
-      <img src={`${base}homeicon.png`} alt="Back" className="back-btn" onClick={onBack} style={{ cursor: 'pointer' }} />
 
       <h2 className="profile-title">My Phone Book</h2>
 
@@ -56,6 +55,7 @@ export default function PhoneBookScreen({ onBack }) {
           <button className="book-add-btn" onClick={addEntry}>+ Add</button>
         </div>
       </div>
+      <img src={`${base}backbtn.png`} alt="Back" className="inline-back-btn" onClick={onBack} />
     </div>
   )
 }

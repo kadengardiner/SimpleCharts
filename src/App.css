@@ -20,6 +20,14 @@ html, body, #root {
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  html, body, #root {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+}
+
 body {
   font-family: 'Courier New', Courier, monospace;
   background: #f0eae8;
@@ -52,6 +60,28 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.header-logo-left {
+  height: clamp(50px, 10.5vh, 200px);
+  width: auto;
+}
+
+.header-guide-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 20px);
+}
+
+.header-action-btn {
+  height: clamp(36px, 7vh, 90px);
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.header-action-btn:hover {
+  transform: scale(1.12);
 }
 
 .header-right {
@@ -99,7 +129,8 @@ body {
 .page-stage {
   flex: 1;
   min-width: 0;
-  min-height: 0;
+  min-height: 200px;
+  position: relative;
 }
 
 .guide-content-shell .page-stage {
@@ -272,6 +303,10 @@ body {
     display: none;
   }
 
+  .header-guide-actions {
+    display: none;
+  }
+
   .header-right {
     display: none;
   }
@@ -295,6 +330,25 @@ body {
     padding: 8px;
     background: #c8c0b8;
     border-bottom: 2px solid #aaa;
+    justify-content: flex-end;
+  }
+
+  .mobile-back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .mobile-back-btn img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.15s;
+  }
+
+  .mobile-back-btn img:hover {
+    transform: scale(1.1);
   }
 
   .mobile-dropdown .sidebar-btn {
@@ -314,7 +368,34 @@ body {
     flex-direction: column;
     padding: 6px;
     gap: 6px;
-    overflow: hidden;
+    overflow-y: auto;
+    height: auto;
+    flex: none;
+  }
+
+  .page-stage {
+    overflow-y: auto;
+    height: auto;
+    padding-bottom: 100px;
+  }
+
+  .subpage-mobile-nav {
+    display: none;
+  }
+
+  .back-btn,
+  .print-btn,
+  .hyperlink-btn {
+    display: none;
+  }
+
+  .inline-back-btn {
+    display: block;
+  }
+
+  .app {
+    height: auto;
+    min-height: 100%;
   }
 
   .sidebar {
@@ -350,14 +431,15 @@ body {
   }
 
   .profile-screen {
-    padding: 16px 16px 100px 16px;
+    padding: 20px 16px 100px 16px;
     align-items: stretch;
     width: 100%;
-    overflow: hidden;
+    overflow-y: auto;
+    height: auto;
   }
 
   .profile-title {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     width: 100%;
     text-align: center;
     white-space: normal;
@@ -366,37 +448,38 @@ body {
   .profile-feild {
     flex-direction: column;
     align-items: stretch;
-    padding-top: 16px;
+    padding-top: 20px;
     width: 100%;
     max-width: 100%;
   }
 
   .profile-feild label {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     width: 100%;
     min-width: unset;
     flex-shrink: unset;
+    margin-bottom: 4px;
   }
 
   .profile-feild input,
   .profile-feild .profile-value {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     width: 100%;
-    height: 1.9rem;
-    line-height: 1.5rem;
+    height: 2.4rem;
+    line-height: 2rem;
   }
 
   .show-password-btn {
     position: static;
     left: unset;
     margin-left: 0;
-    margin-top: 6px;
-    font-size: 0.85rem;
+    margin-top: 8px;
+    font-size: 1rem;
     align-self: flex-start;
   }
 
   .profile-buttons {
-    margin-top: 16px;
+    margin-top: 20px;
   }
 
   .profile-edit-btn,
@@ -413,8 +496,10 @@ body {
   }
 
   .back-btn {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+    bottom: 12px;
+    right: 12px;
   }
 }
 
@@ -533,23 +618,78 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 40px 40px 130px 40px;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .back-btn {
   position: absolute;
-  bottom: 1px;
-  right: 1px;
-  width: 125px;
-  height: 125px;
-  border-radius: 15px;
-  border: 2px solid;
+  bottom: 20px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.15s;
 }
 
 .back-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.12);
+}
+
+.inline-back-btn {
+  display: none;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: transform 0.15s;
+}
+
+.inline-back-btn:hover {
+  transform: scale(1.1);
+}
+
+.print-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 130px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.15s;
+}
+
+.print-btn:hover {
+  transform: scale(1.12);
+}
+
+.hyperlink-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 240px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.15s;
+}
+
+.hyperlink-btn:hover {
+  transform: scale(1.12);
 }
 
 .profile-title {
@@ -661,14 +801,14 @@ body {
   border: 1px solid #999;
   padding: 12px;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
 
 .guide-title {
   text-align: center;
-  font-size: clamp(1.45rem, 2vw, 2.3rem);
+  font-size: clamp(2rem, 4vw, 5rem);
   margin-bottom: 12px;
   color: #f6f6f6;
   font-family: serif;
@@ -679,9 +819,11 @@ body {
 .guide-columns {
   display: grid;
   grid-template-columns: minmax(260px, 38%) 1fr;
+  grid-template-rows: 1fr;
   gap: 12px;
   flex: 1;
   min-height: 0;
+  align-items: stretch;
 }
 
 .guide-steps-panel,
@@ -696,19 +838,19 @@ body {
   background: #dcdcdc;
   padding: 12px 12px 8px;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .guide-step-row {
   display: grid;
-  grid-template-columns: 24px 24px 1fr;
-  gap: 8px;
+  grid-template-columns: clamp(24px, 2.5vw, 40px) clamp(24px, 2.5vw, 40px) 1fr;
+  gap: 10px;
   align-items: start;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .guide-step-number {
-  font-size: 1.7rem;
+  font-size: clamp(2rem, 3.5vw, 4rem);
   line-height: 1;
   text-align: center;
 }
@@ -740,8 +882,8 @@ body {
 }
 
 .guide-step-text {
-  line-height: 1.2;
-  font-size: 0.9rem;
+  line-height: 1.4;
+  font-size: clamp(1.3rem, 2.2vw, 2.4rem);
 }
 
 .guide-center-panel {
@@ -749,6 +891,7 @@ body {
   flex-direction: column;
   min-width: 0;
   min-height: 0;
+  flex: 1;
 }
 
 .guide-grid-card {
@@ -759,8 +902,8 @@ body {
 
 .guide-grid-intro {
   margin-bottom: 10px;
-  line-height: 1.2;
-  font-size: 0.95rem;
+  line-height: 1.4;
+  font-size: clamp(1.3rem, 2.2vw, 2.4rem);
 }
 
 .guide-step-grid {
@@ -773,7 +916,7 @@ body {
   min-height: 68px;
   border: 2px solid #606060;
   background: var(--guide-accent, #8683f5);
-  font-size: 1.7rem;
+  font-size: clamp(1.8rem, 3vw, 3.5rem);
   cursor: pointer;
 }
 
@@ -782,27 +925,52 @@ body {
 }
 
 .guide-step-button-other {
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
 }
 
 .guide-detail-card {
   background: #dcdcdc;
   margin-top: 10px;
   padding: 12px;
-  min-height: 0;
   flex: 1;
-  overflow: hidden;
+  min-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .guide-detail-title {
-  font-size: 1rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.8rem);
   font-weight: bold;
-  margin-bottom: 6px;
+}
+
+.guide-detail-close {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 12px 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: filter 0.15s;
+}
+
+.guide-detail-close:hover {
+  filter: brightness(1.2);
 }
 
 .guide-detail-text {
-  line-height: 1.25;
-  font-size: 0.95rem;
+  line-height: 1.5;
+  font-size: clamp(1.3rem, 2vw, 2.2rem);
+  flex: 1;
 }
 
 .guide-bottom-row {
@@ -844,7 +1012,16 @@ body {
   align-self: center;
 }
 
+
 .guide-mobile-bottom-nav {
+  display: none;
+}
+
+.guide-action-bar {
+  display: none;
+}
+
+.subpage-mobile-nav {
   display: none;
 }
 
@@ -922,6 +1099,43 @@ body {
   .guide-bottom-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .back-btn,
+  .print-btn,
+  .hyperlink-btn {
+    display: none;
+  }
+
+  .guide-action-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #d8d5d5;
+    border-top: 2px solid #999;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 20px;
+    z-index: 100;
+  }
+
+  .guide-action-bar img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .guide-action-bar img:hover {
+    transform: scale(1.12);
+  }
+
+  .guide-main {
+    padding-bottom: 100px;
   }
 
   .guide-mobile-bottom-nav {

@@ -62,7 +62,7 @@ export default function ProfileScreen({ onBack }) {
       </div>
 
       <button className="logout-btn">Logout</button>
-      <img src={`${base}homeicon.png`} alt="Back" className="back-btn" onClick={onBack} style={{ cursor: 'pointer' }} />
+      <img src={`${base}backbtn.png`} alt="Back" className="inline-back-btn" onClick={onBack} />
     </div>
   );
 }
