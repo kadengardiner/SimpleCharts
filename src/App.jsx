@@ -56,7 +56,7 @@ function App() {
             : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} title='Go to Homepage'/>}
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => setCurrentPage('home')}/>}
         <div className="header-right">
-          <span className="brand-name">Simple Charts</span>
+          <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW")}/>
           <input className="search-box" type="text" placeholder="Question? Type it here!" />
         </div>
         <button className="mobile-menu-btn" onClick={() => setMenuOpen(o => !o)}>☰ Menu</button>

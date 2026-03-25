@@ -92,12 +92,17 @@ body {
   padding-right: 0;
 }
 
-.brand-name {
-  color: #e05050;
-  font-weight: bold;
-  font-size: clamp(0.9rem, 5.5vh, 4rem);
+.help-button {
+  stroke: #8B0000;
+  height: clamp(0.9rem, 5.5vh, 4rem);
   font-family: sans-serif;
   white-space: nowrap;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.help-button:hover {
+  background-color: #ffafaf;
 }
 
 .search-box {
