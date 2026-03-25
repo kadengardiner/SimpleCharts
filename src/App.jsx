@@ -49,11 +49,11 @@ function App() {
           : guidePageData[currentPage]
             ? <div className="header-guide-actions">
                 <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" />
-                <img className="header-action-btn" src={`${base}hyperlinkbtn.png`} alt="Hyperlink" />
-                <img className="header-action-btn" src={`${base}printbtn.jpg`} alt="Print" onClick={() => window.print()} />
-                <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} />
+                <img className="header-action-btn" src={`${base}hyperlinkbtn.png`} alt="Hyperlink" title='Open in MyChart'/>
+                <img className="header-action-btn" src={`${base}printbtn.jpg`} alt="Print" onClick={() => window.print()} title='Print this Page'/>
+                <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} title='Go to Homepage'/>
               </div>
-            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} />}
+            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={() => setCurrentPage('home')} title='Go to Homepage'/>}
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" />}
         <div className="header-right">
           <span className="brand-name">Simple Charts</span>
