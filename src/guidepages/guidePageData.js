@@ -2,6 +2,8 @@ const guidePageData = {
   schedule: {
     title: 'How to Schedule an Appointment',
     accent: '#6a9bc3',
+    searchDescription: 'Help with making a new appointment or booking a visit.',
+    searchKeywords: ['schedule', 'appointment', 'visit', 'book appointment', 'book visit', 'new appointment', 'doctor appointment'],
     steps: [
       'If Schedule Appointment is not on the home screen, click Menu first.',
       'Click Appointments or Visits.',
@@ -29,6 +31,8 @@ const guidePageData = {
   results: {
     title: 'How to View Test Results',
     accent: '#5a9e5a',
+    searchDescription: 'Help finding lab work, test results, and doctor notes.',
+    searchKeywords: ['test results', 'results', 'labs', 'lab', 'blood work', 'bloodwork', 'report', 'doctor notes'],
     steps: [
       'Log in to your portal.',
       'Open Test Results or Health Record.',
@@ -56,6 +60,8 @@ const guidePageData = {
   meds: {
     title: 'How to View Medications',
     accent: '#c8c84a',
+    searchDescription: 'Help with medicines, prescriptions, pharmacies, and refills.',
+    searchKeywords: ['medications', 'medicine', 'prescription', 'refill', 'refills', 'pharmacy', 'dosage', 'medicine list'],
     steps: [
       'Log in to your portal.',
       'Open the Medications section.',
@@ -83,6 +89,8 @@ const guidePageData = {
   billing: {
     title: 'How to View Billing',
     accent: '#c05050',
+    searchDescription: 'Help reviewing bills, balances, due dates, and payments.',
+    searchKeywords: ['billing', 'bill', 'payment', 'pay', 'balance', 'statement', 'amount due', 'charges'],
     steps: [
       'Log in to your portal.',
       'Open Billing or Payments.',
@@ -110,6 +118,8 @@ const guidePageData = {
   messages: {
     title: 'How to View Messages',
     accent: '#d4844a',
+    searchDescription: 'Help opening inbox messages and contacting your doctor.',
+    searchKeywords: ['messages', 'message', 'inbox', 'doctor message', 'contact doctor', 'send message', 'reply'],
     steps: [
       'Log in to your portal.',
       'Open Messages or Inbox.',
@@ -137,6 +147,8 @@ const guidePageData = {
   upcoming: {
     title: 'How to View Upcoming Appointments',
     accent: '#c060b0',
+    searchDescription: 'Help finding your next visit, appointment date, and location.',
+    searchKeywords: ['upcoming appointment', 'next appointment', 'appointment date', 'future visit', 'reschedule', 'cancel appointment'],
     steps: [
       'Log in to your portal.',
       'Open Appointments or Visits.',
