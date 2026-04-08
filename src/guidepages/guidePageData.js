@@ -2,6 +2,7 @@ const guidePageData = {
   schedule: {
     title: 'How to Schedule an Appointment',
     accent: '#6a9bc3',
+    symbol: 1,
     searchDescription: 'Help with making a new appointment or booking a visit.',
     searchKeywords: ['schedule', 'appointment', 'visit', 'book appointment', 'book visit', 'new appointment', 'doctor appointment'],
     steps: [
@@ -31,6 +32,7 @@ const guidePageData = {
   results: {
     title: 'How to View Test Results',
     accent: '#5a9e5a',
+    symbol: 2,
     searchDescription: 'Help finding lab work, test results, and doctor notes.',
     searchKeywords: ['test results', 'results', 'labs', 'lab', 'blood work', 'bloodwork', 'report', 'doctor notes'],
     steps: [
@@ -60,6 +62,7 @@ const guidePageData = {
   meds: {
     title: 'How to View Medications',
     accent: '#c8c84a',
+    symbol: 3,
     searchDescription: 'Help with medicines, prescriptions, pharmacies, and refills.',
     searchKeywords: ['medications', 'medicine', 'prescription', 'refill', 'refills', 'pharmacy', 'dosage', 'medicine list'],
     steps: [
@@ -89,6 +92,7 @@ const guidePageData = {
   billing: {
     title: 'How to View Billing',
     accent: '#c05050',
+    symbol: 4,
     searchDescription: 'Help reviewing bills, balances, due dates, and payments.',
     searchKeywords: ['billing', 'bill', 'payment', 'pay', 'balance', 'statement', 'amount due', 'charges'],
     steps: [
@@ -118,6 +122,7 @@ const guidePageData = {
   messages: {
     title: 'How to View Messages',
     accent: '#d4844a',
+    symbol: 5,
     searchDescription: 'Help opening inbox messages and contacting your doctor.',
     searchKeywords: ['messages', 'message', 'inbox', 'doctor message', 'contact doctor', 'send message', 'reply'],
     steps: [
@@ -147,6 +152,7 @@ const guidePageData = {
   upcoming: {
     title: 'How to View Upcoming Appointments',
     accent: '#c060b0',
+    symbol: 6,
     searchDescription: 'Help finding your next visit, appointment date, and location.',
     searchKeywords: ['upcoming appointment', 'next appointment', 'appointment date', 'future visit', 'reschedule', 'cancel appointment'],
     steps: [

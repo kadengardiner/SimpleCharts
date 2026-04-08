@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100%"
+   height="100%"
+   viewBox="0 0 130 102"
+   version="1.1"
+   xml:space="preserve"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+   id="svg1"
+   sodipodi:docname="4.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs1" /><sodipodi:namedview
+   id="namedview1"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="5.4307692"
+   inkscape:cx="65"
+   inkscape:cy="50.913598"
+   inkscape:window-width="1920"
+   inkscape:window-height="991"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg1" />
+    <g
+   transform="matrix(1,0,0,1,-766.007,-372.09)"
+   id="g1">
+        <g
+   id="layer1">
+            <path
+   id="path1"
+   d="M773.241,472.088C771.448,470.995 769.087,468.634 767.995,466.842C766.098,463.731 766.007,461.735 766.007,423.083C766.007,384.43 766.098,382.434 767.995,379.323C769.087,377.531 771.448,375.17 773.241,374.077C776.388,372.159 778.378,372.09 831,372.09C883.622,372.09 885.612,372.159 888.759,374.077C890.552,375.17 892.912,377.531 894.005,379.323C895.902,382.434 895.993,384.43 895.993,423.083C895.993,461.735 895.902,463.731 894.005,466.842C892.912,468.634 890.552,470.995 888.759,472.088C885.612,474.007 883.622,474.075 831,474.075C778.378,474.075 776.388,474.006 773.241,472.088ZM886.171,464.428C887.834,462.923 888,460.836 888,441.428L888,420.083L774,420.083L774,441.254C774,459.551 774.224,462.673 775.655,464.254C777.219,465.982 780.251,466.083 830.826,466.083C879.22,466.083 884.518,465.924 886.171,464.428ZM784.686,449.435C783.288,448.037 784.062,444.12 785.934,443.118C787.072,442.509 795.645,442.083 806.743,442.083C827.24,442.083 829.486,442.596 828.845,447.139L828.5,449.583L806.936,449.851C795.076,449.999 785.063,449.812 784.686,449.435L784.686,449.435ZM888,391.305C888,386.789 887.481,383.786 886.443,382.305L884.887,380.083L777.113,380.083L775.557,382.305C774.52,383.786 774,386.789 774,391.305L774,398.083L888,398.083L888,391.305Z"
+   style="fill-rule:nonzero;fill:#c05050;fill-opacity:1" />
+        </g>
+    </g>
+</svg>

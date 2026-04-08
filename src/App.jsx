@@ -208,14 +208,14 @@ function App() {
           : showGuideHeader
             ? <div className="header-guide-actions">
                 <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')}/>
-                <img className="header-action-btn" src={`${base}hyperlinkbtn.png`} alt="Hyperlink" title='Open in MyChart'/>
-                {currentPage !== 'search-results' && <img className="header-action-btn" src={`${base}printbtn.jpg`} alt="Print" onClick={() => window.print()} title='Print this Page'/>}
+                <img className="header-action-btn" src={`${base + guidePageData[currentPage].symbol}.svg`} alt="Hyperlink" title={`${tiles[guidePageData[currentPage].symbol-1].label} in MyChart`}/>
+                {currentPage !== 'search-results'}
                 <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page'/>
               </div>
             : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page'/>}
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')}/>}
         <div className="header-right">
-          <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW")}/>
+          <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW\n(not yet implemented)")}/>
           <form onSubmit={handleSearchSubmit}>
             <input
               className="search-box"
@@ -242,8 +242,7 @@ function App() {
           {isGuidePage && (
             <div className="guide-action-bar">
               <img src={`${base}backbtn.png`} alt="Back" onClick={goBack} />
-              <img src={`${base}printbtn.jpg`} alt="Print" onClick={() => window.print()} />
-              <img src={`${base}hyperlinkbtn.png`} alt="Hyperlink" />
+              <img src={`${base + guidePageData[currentPage].symbol}`} alt="Hyperlink" />
             </div>
           )}
           {currentPage === 'home'

@@ -38,7 +38,7 @@
     .guide-step-row{
         margin-bottom: 1.5em !important;
     }
-    .header, .sidebar, .guide-bottom-row, .guide-grid-card, .guide-detail-card{
+    .header, .sidebar, .guide-bottom-row, .guide-grid-card, .guide-detail-card, .header-action-btn {
         display: none !important;
     }
 
@@ -59,7 +59,5 @@
     body{
         background: none !important;
     }
-
-
 
 }

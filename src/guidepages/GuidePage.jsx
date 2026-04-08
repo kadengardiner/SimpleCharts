@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+const base = import.meta.env.BASE_URL
+
 
 export default function GuidePage({ page }) {
   const [checkedSteps, setCheckedSteps] = useState(Array(page.steps.length).fill(false));
@@ -38,6 +40,7 @@ export default function GuidePage({ page }) {
                 <div className="guide-step-text">{step}</div>
               </div>
             ))}
+          <img src={`${base}printbtn.jpg`} className="header-action-btn" alt="Print" onClick={() => window.print()} />
           </section>
 
           <section className="guide-center-panel">
