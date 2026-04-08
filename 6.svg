@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100%"
+   height="100%"
+   viewBox="0 0 130 128"
+   version="1.1"
+   xml:space="preserve"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+   id="svg1"
+   sodipodi:docname="6.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs1" /><sodipodi:namedview
+   id="namedview1"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="5.4307692"
+   inkscape:cx="65"
+   inkscape:cy="63.987252"
+   inkscape:window-width="1920"
+   inkscape:window-height="991"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg1" />
+    <g
+   transform="matrix(1,0,0,1,-766.001,-0.0825392)"
+   id="g1">
+        <g
+   id="layer1">
+            <path
+   id="path1"
+   d="M772.875,125.644C765.922,120.919 766,121.537 766.002,70.931C766.003,20.376 765.923,21.012 772.898,16.352C775.884,14.358 777.55,14.083 786.648,14.083L797,14.083L797,8.283C797,2.024 798.108,0.083 801.681,0.083C804.193,0.083 804.799,1.614 805.236,9.083L805.5,13.583L856.5,13.583L856.763,9.083C857.201,1.614 857.806,0.083 860.319,0.083C863.891,0.083 865,2.024 865,8.283L865,14.083L875.352,14.083C884.45,14.083 886.116,14.358 889.102,16.352C896.077,21.012 895.996,20.376 895.998,70.931C896,121.537 896.078,120.919 889.125,125.644L885.535,128.083L776.464,128.083L772.875,125.644ZM885.686,117.908L888,115.734L888,50.083L774,50.083L774,83.083C774,114.749 774.081,116.163 776,118.083C777.949,120.032 779.333,120.083 830.686,120.083L883.371,120.083L885.686,117.908ZM847.2,103.883C846.409,103.091 846,98.846 846,91.418C846,77.786 845.692,78.083 859.863,78.083C873.039,78.083 873,78.043 873,91.954C873,98.965 872.584,103.098 871.8,103.883C871.011,104.672 866.8,105.083 859.5,105.083C852.2,105.083 847.989,104.672 847.2,103.883Z"
+   style="fill-rule:nonzero;fill:#c060b0;fill-opacity:1" />
+        </g>
+    </g>
+</svg>
