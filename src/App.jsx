@@ -5,15 +5,16 @@ import PhoneBookScreen from './PhoneBookScreen'
 import AddressBookScreen from './AddressBookScreen'
 import GuidePage from './guidepages/GuidePage'
 import guidePageData from './guidepages/guidePageData'
+import MyChartsLink from './mychartsPortal/MyChartsLink'
 
 const base = import.meta.env.BASE_URL
 
 const tiles = [
-  { label: 'Schedule Appointment',      color: '#6a9bc3', id: 'schedule', ctaImg: `${base}scheduleaptButton.png`           },
-  { label: 'Test Results',               color: '#5a9e5a', id: 'results',  ctaImg: `${base}testResultsclickme.png`          },
-  { label: 'View Medications',           color: '#c8c84a', id: 'meds',     ctaImg: `${base}viewMedicationClickMe.png`       },
-  { label: 'View Billing',               color: '#c05050', id: 'billing',  ctaImg: `${base}viewBillingClickMe.png`          },
-  { label: 'View Messages',              color: '#d4844a', id: 'messages', ctaImg: `${base}viewMessageClickMe.png`          },
+  { label: 'Schedule Appointment', color: '#6a9bc3', id: 'schedule', ctaImg: `${base}scheduleaptButton.png` },
+  { label: 'Test Results', color: '#5a9e5a', id: 'results', ctaImg: `${base}testResultsclickme.png` },
+  { label: 'View Medications', color: '#c8c84a', id: 'meds', ctaImg: `${base}viewMedicationClickMe.png` },
+  { label: 'View Billing', color: '#c05050', id: 'billing', ctaImg: `${base}viewBillingClickMe.png` },
+  { label: 'View Messages', color: '#d4844a', id: 'messages', ctaImg: `${base}viewMessageClickMe.png` },
   { label: 'View Upcoming Appointment', color: '#c060b0', id: 'upcoming', ctaImg: `${base}viewUpcomingAppointmentClickMe.png` },
 ]
 
@@ -60,7 +61,7 @@ function SearchResults({ query, results, onOpenResult }) {
       <div className="search-results-card">
         <h1 className="search-results-title">Search Results</h1>
         <p className="search-results-subtitle">
-          Showing matches for <strong>“{query}”</strong>
+          Showing matches for <strong>"{query}"</strong>
         </p>
 
         {results.length === 0 ? (
@@ -207,15 +208,20 @@ function App() {
           ? <h1 className="greeting">Hello John Smith!</h1>
           : showGuideHeader
             ? <div className="header-guide-actions">
-                <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')}/>
-                <img className="header-action-btn" src={`${base + guidePageData[currentPage].symbol}.svg`} alt="Hyperlink" title={`${tiles[guidePageData[currentPage].symbol-1].label} in MyChart`}/>
-                {currentPage !== 'search-results'}
-                <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page'/>
-              </div>
-            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page'/>}
-        {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')}/>}
+              <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
+              {currentPage !== 'search-results' && (
+                <MyChartsLink
+                  pageId={currentPage}
+                  imgSrc={`${base + guidePageData[currentPage].symbol}.svg`}
+                  label={tiles[guidePageData[currentPage].symbol - 1].label}
+                />
+              )}
+              <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
+            </div>
+            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />}
+        {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />}
         <div className="header-right">
-          <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW\n(not yet implemented)")}/>
+          <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW\n(not yet implemented)")} />
           <form onSubmit={handleSearchSubmit}>
             <input
               className="search-box"
@@ -257,12 +263,12 @@ function App() {
                     ? <SearchResults query={searchQuery} results={searchResults} onOpenResult={navigateTo} />
                     : isGuidePage
                       ? <GuidePage
-                          page={guidePageData[currentPage]}
-                          onBack={goBack}
-                          onOpenProfile={() => navigateTo('profile')}
-                          onOpenPhonebook={() => navigateTo('phonebook')}
-                          onOpenAddressbook={() => navigateTo('addressbook')}
-                        />
+                        page={guidePageData[currentPage]}
+                        onBack={goBack}
+                        onOpenProfile={() => navigateTo('profile')}
+                        onOpenPhonebook={() => navigateTo('phonebook')}
+                        onOpenAddressbook={() => navigateTo('addressbook')}
+                      />
                       : null}
         </div>
 

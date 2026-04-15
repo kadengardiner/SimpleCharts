@@ -1,22 +1,30 @@
 import { useState } from 'react';
+import HospitalPicker from './mychartsPortal/HospitalPicker';
+import useMyChartsUrl from './mychartsPortal/useMyChartsUrl';
 
 export default function ProfileScreen() {
+  const { saveHospital } = useMyChartsUrl()
+
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [saved, setSaved] = useState({
     email: 'johnsmith@gmail.com',
     password: 'mypassword123',
     name: 'John Smith',
+    hospitalId: localStorage.getItem('mychartsHospitalId') || '',
   });
   const [draft, setDraft] = useState({ ...saved });
+  const [draftHospitalId, setDraftHospitalId] = useState(saved.hospitalId)
 
   function handleEdit() {
     setDraft({ ...saved });
+    setDraftHospitalId(saved.hospitalId)
     setIsEditing(true);
   }
 
   function handleSave() {
-    setSaved({ ...draft });
+    saveHospital(draftHospitalId)
+    setSaved({ ...draft, hospitalId: draftHospitalId });
     setIsEditing(false);
   }
 
@@ -47,6 +55,13 @@ export default function ProfileScreen() {
           ? <input type="text" value={draft.name} onChange={e => setDraft({ ...draft, name: e.target.value })} />
           : <span className="profile-value">{saved.name}</span>}
       </div>
+
+      <HospitalPicker
+        isEditing={isEditing}
+        draftId={draftHospitalId}
+        setDraftId={setDraftHospitalId}
+        savedId={saved.hospitalId}
+      />
 
       <div className="profile-buttons">
         {isEditing ? (
