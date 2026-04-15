@@ -253,12 +253,6 @@ function App() {
 
       <div className={`content ${isGuidePage ? 'guide-content-shell' : ''}`}>
         <div className={currentPage === 'home' ? 'tile-grid' : 'page-stage'}>
-          {isGuidePage && (
-            <div className="guide-action-bar">
-              <img src={`${base}backbtn.png`} alt="Back" onClick={goBack} />
-              <img src={`${base + guidePageData[currentPage].symbol}`} alt="Hyperlink" />
-            </div>
-          )}
           {currentPage === 'home'
             ? tiles.map((t) => <Tile key={t.id} label={t.label} color={t.color} ctaImg={t.ctaImg} onClick={() => navigateTo(t.id)} />)
             : currentPage === 'profile'
