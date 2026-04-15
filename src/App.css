@@ -67,7 +67,7 @@ body {
   width: auto;
 }
 
-.header-guide-actions {
+.header-guide-actions, .header-ref-actions {
   display: flex;
   align-items: center;
   gap: clamp(6px, 1vw, 20px);
@@ -94,6 +94,16 @@ body {
 
 .help-button {
   stroke: #8B0000;
+  height: clamp(0.9rem, 5.5vh, 4rem);
+  font-family: sans-serif;
+  white-space: nowrap;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.accessibility-settings{
+  margin-right: 10px;
+  stroke: blue;
   height: clamp(0.9rem, 5.5vh, 4rem);
   font-family: sans-serif;
   white-space: nowrap;

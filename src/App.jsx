@@ -6,6 +6,7 @@ import AddressBookScreen from './AddressBookScreen'
 import GuidePage from './guidepages/GuidePage'
 import guidePageData from './guidepages/guidePageData'
 import MyChartsLink from './mychartsPortal/MyChartsLink'
+import AccessibilityOptions from './Accessibility'
 
 const base = import.meta.env.BASE_URL
 
@@ -218,10 +219,17 @@ function App() {
               )}
               <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
             </div>
-            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />}
+            : <div className="header-ref-actions"> 
+                <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
+                <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
+              </div>
+            }
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />}
         <div className="header-right">
-          <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW\n(not yet implemented)")} />
+          <div>
+            <img className="accessibility-settings" src={`${base}access.svg`} onClick={() => navigateTo('accessibility')} />
+            <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW\n(not yet implemented)")} />
+          </div>
           <form onSubmit={handleSearchSubmit}>
             <input
               className="search-box"
@@ -259,17 +267,19 @@ function App() {
                 ? <PhoneBookScreen onBack={goBack} />
                 : currentPage === 'addressbook'
                   ? <AddressBookScreen onBack={goBack} />
-                  : currentPage === 'search-results'
-                    ? <SearchResults query={searchQuery} results={searchResults} onOpenResult={navigateTo} />
-                    : isGuidePage
-                      ? <GuidePage
-                        page={guidePageData[currentPage]}
-                        onBack={goBack}
-                        onOpenProfile={() => navigateTo('profile')}
-                        onOpenPhonebook={() => navigateTo('phonebook')}
-                        onOpenAddressbook={() => navigateTo('addressbook')}
-                      />
-                      : null}
+                  : currentPage === 'accessibility'
+                    ? <AccessibilityOptions onBack={goBack} />
+                    : currentPage === 'search-results'
+                        ? <SearchResults query={searchQuery} results={searchResults} onOpenResult={navigateTo} />
+                        : isGuidePage
+                        ? <GuidePage
+                            page={guidePageData[currentPage]}
+                            onBack={goBack}
+                            onOpenProfile={() => navigateTo('profile')}
+                            onOpenPhonebook={() => navigateTo('phonebook')}
+                            onOpenAddressbook={() => navigateTo('addressbook')}
+                        />
+                        : null}
         </div>
 
         <aside className="sidebar">
