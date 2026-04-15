@@ -1276,3 +1276,185 @@ body {
     align-items: flex-start;
   }
 }
+
+
+.guide-page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(8px, 1vw, 20px);
+  margin-bottom: clamp(8px, 1vh, 16px);
+}
+
+.guide-columns-single-step {
+  gap: clamp(8px, 1vw, 18px);
+}
+
+.guide-steps-panel-single {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1vh, 18px);
+}
+
+.guide-print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 2px solid #666;
+  background: #ece7e4;
+  color: #111;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.guide-print-button:hover {
+  filter: brightness(1.04);
+}
+
+.guide-print-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.guide-progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #efe9e6;
+  border: 2px solid #8b817a;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.guide-progress-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #222;
+}
+
+.guide-progress-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.guide-progress-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #666;
+  background: #d6cfca;
+  cursor: pointer;
+}
+
+.guide-progress-dot.active {
+  background: var(--guide-accent);
+  transform: scale(1.1);
+}
+
+.guide-progress-dot.done {
+  background: #6ba86b;
+}
+
+.guide-step-focus-card {
+  background: #f7f4f2;
+  border: 3px solid #8b817a;
+  border-radius: 12px;
+  padding: clamp(14px, 2vh, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.guide-step-focus-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.guide-step-number-focus {
+  font-size: clamp(2rem, 5vh, 4rem);
+}
+
+.guide-step-focus-text {
+  font-size: clamp(1rem, 2.2vh, 1.6rem);
+  line-height: 1.45;
+  font-family: sans-serif;
+}
+
+.guide-step-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.guide-nav-button {
+  border: 2px solid #666;
+  background: #eee8e4;
+  color: #111;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-size: clamp(0.9rem, 1.7vh, 1.2rem);
+  font-weight: bold;
+  padding: 12px 10px;
+  cursor: pointer;
+}
+
+.guide-nav-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.guide-nav-button-primary {
+  background: var(--guide-accent);
+  color: #fff;
+}
+
+.guide-help-card {
+  margin-bottom: clamp(8px, 1vh, 14px);
+}
+
+.guide-step-grid-compact {
+  gap: 6px;
+}
+
+.guide-detail-close {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .guide-page-top {
+    align-items: stretch;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .guide-print-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .guide-progress-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .guide-progress-dots {
+    justify-content: flex-start;
+  }
+
+  .guide-step-nav {
+    grid-template-columns: 1fr;
+  }
+}
