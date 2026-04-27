@@ -1,6 +1,7 @@
 const guidePageData = {
   schedule: {
     title: 'How to Schedule an Appointment',
+    linkLabel: 'Schedule Appointment',
     accent: '#6a9bc3',
     symbol: 1,
     searchDescription: 'Help with making a new appointment or booking a visit.',
@@ -27,6 +28,37 @@ const guidePageData = {
       8: 'Double-check the provider, office, visit type, date, and time before finishing.',
       9: 'Press Schedule or Confirm and wait for the success message before leaving the page.',
       other: 'If your portal looks different, use the question box at the top or call the office from the phone book.'
+    }
+  },
+  cancel: {
+    title: 'How to Cancel an Appointment',
+    linkLabel: 'Cancel Appointment',
+    accent: '#6a9bc3',
+    symbol: 1,
+    searchDescription: 'Help canceling an appointment or visit you no longer need.',
+    searchKeywords: ['cancel', 'cancel appointment', 'remove appointment', 'appointment cancellation', 'cancel visit', 'delete appointment'],
+    steps: [
+      'Log in to your portal.',
+      'Open Appointments or Visits.',
+      'Choose Upcoming Appointments.',
+      'Find the appointment you want to cancel.',
+      'Open the appointment details.',
+      'Look for Cancel Appointment or Cancel Visit.',
+      'Read the cancellation warning carefully.',
+      'Confirm that you want to cancel.',
+      'Wait for the cancellation confirmation.'
+    ],
+    details: {
+      1: 'Start by signing into the patient portal with your account information.',
+      2: 'Open the Appointments or Visits section from the main page or menu.',
+      3: 'Choose Upcoming Appointments so you only see future visits.',
+      4: 'Find the appointment that you no longer need. Check the date, time, provider, and location before continuing.',
+      5: 'Open the appointment so you can see the full details and available actions.',
+      6: 'Look for a button or link that says Cancel Appointment, Cancel Visit, or Cancel This Appointment.',
+      7: 'Read any warning message. Some offices may charge a fee or ask you to call if the appointment is too soon.',
+      8: 'If you are sure, press Confirm Cancellation or Yes, Cancel Appointment.',
+      9: 'Wait until the portal shows a confirmation message. If you do not see one, call the office to make sure the appointment was canceled.',
+      other: 'If the portal does not let you cancel online, use the phone book to call the office directly.'
     }
   },
   results: {

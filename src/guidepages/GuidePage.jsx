@@ -42,23 +42,18 @@ export default function GuidePage({ page, onBack }) {
   function goToNextStep() {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
-    if (isLastStep) {
-      if (!checkedSteps[currentStepIndex]) {
-        setCheckedSteps(current => current.map((value, i) => (i === currentStepIndex ? true : value)));
-        setTimeout(() => setShowCompletion(true), 400);
-      } else {
+    setShowStepHelp(false);
+
+    setCurrentStepIndex((current) => {
+      setCheckedSteps((steps) => steps.map((value, i) => (i === current ? true : value)));
+
+      if (current >= page.steps.length - 1) {
         setShowCompletion(true);
+        return current;
       }
-    } else if (!checkedSteps[currentStepIndex]) {
-      setCheckedSteps(current => current.map((value, i) => (i === currentStepIndex ? true : value)));
-      setTimeout(() => {
-        setCurrentStepIndex((current) => Math.min(page.steps.length - 1, current + 1));
-        setShowStepHelp(false);
-      }, 400);
-    } else {
-      setCurrentStepIndex((current) => Math.min(page.steps.length - 1, current + 1));
-      setShowStepHelp(false);
-    }
+
+      return current + 1;
+    });
   }
 
   function jumpToStep(index) {

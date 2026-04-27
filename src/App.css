@@ -75,6 +75,44 @@ body {
   gap: clamp(6px, 1vw, 20px);
 }
 
+.header-home-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 18px);
+  min-width: 0;
+}
+
+.header-home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: clamp(76px, 8vw, 140px);
+  height: clamp(38px, 7vh, 82px);
+  padding: 4px 10px;
+  border: 2px solid #888;
+  border-radius: 12px;
+  background: #f4f0ee;
+  color: #111;
+  font-family: sans-serif;
+  font-size: clamp(0.72rem, 1.4vh, 1.25rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s, box-shadow 0.15s;
+}
+
+.header-home-btn img {
+  width: clamp(24px, 4vh, 44px);
+  height: clamp(24px, 4vh, 44px);
+  object-fit: contain;
+}
+
+.header-home-btn:hover {
+  transform: scale(1.06);
+  filter: brightness(1.04);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
 .header-action-btn {
   height: clamp(36px, 7vh, 90px);
   width: auto;
@@ -324,8 +362,40 @@ body {
     display: none;
   }
 
-  .header-guide-actions {
-    display: none;
+  .header-guide-actions,
+  .header-ref-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header-home-actions {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header-home-btn {
+    min-width: 54px;
+    height: 44px;
+    padding: 4px 6px;
+    gap: 3px;
+    font-size: 0.62rem;
+    border-radius: 8px;
+  }
+
+  .header-home-btn img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header-logo-left {
+    height: 44px;
+  }
+
+  .header-action-btn {
+    height: 44px;
   }
 
   .header-right {
@@ -805,6 +875,97 @@ body {
 }
 
 
+
+/* ── Appointments submenu ── */
+.appointments-menu-page {
+  width: 100%;
+  height: 100%;
+  background: #d8d5d5;
+  border: 3px solid #888;
+  padding: clamp(18px, 3vh, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vh, 32px);
+  overflow: hidden;
+}
+
+.appointments-menu-header {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.appointments-menu-title {
+  font-family: serif;
+  font-size: clamp(2rem, 6vh, 4.5rem);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.appointments-menu-subtitle {
+  font-family: sans-serif;
+  font-size: clamp(1rem, 2.2vh, 1.5rem);
+  margin-top: 8px;
+  color: #333;
+}
+
+.appointments-menu-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.appointments-option-card {
+  border: 3px solid rgba(0,0,0,0.25);
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  cursor: pointer;
+  padding: clamp(16px, 3vh, 34px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 2vh, 24px);
+  text-align: center;
+  transition: transform 0.15s, filter 0.15s, box-shadow 0.15s, border-color 0.15s;
+  min-height: 0;
+}
+
+.appointments-option-card:hover {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+  border-color: rgba(255,255,255,0.85);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.appointments-option-schedule {
+  background: #6a9bc3;
+}
+
+.appointments-option-cancel {
+  background: #5c7f9e;
+}
+
+.appointments-option-title {
+  font-size: clamp(1.5rem, 4vh, 3.4rem);
+  line-height: 1.15;
+}
+
+.appointments-option-desc {
+  max-width: 560px;
+  font-family: sans-serif;
+  font-size: clamp(0.95rem, 2vh, 1.5rem);
+  line-height: 1.45;
+}
+
+.appointments-option-arrow {
+  font-size: clamp(1.4rem, 4vh, 3.5rem);
+  color: #111;
+}
+
 /* Guide Pages */
 .guide-page {
   width: 100%;
@@ -948,8 +1109,8 @@ body {
 }
 
 .guide-progress-dot.active {
-  background: var(--guide-accent);
-  border-color: var(--guide-accent);
+  background: #2f80ed;
+  border-color: #1d5fb8;
   transform: scale(1.4);
 }
 
@@ -1449,3 +1610,40 @@ body {
 }
 
 
+
+
+@media (max-width: 600px) {
+  .appointments-menu-page {
+    height: auto;
+    min-height: calc(100vh - 88px);
+    padding: 14px;
+    gap: 14px;
+    overflow: visible;
+  }
+
+  .appointments-menu-title {
+    font-size: 1.7rem;
+  }
+
+  .appointments-menu-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .appointments-menu-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .appointments-option-card {
+    min-height: 180px;
+    padding: 16px;
+  }
+
+  .appointments-option-title {
+    font-size: 1.35rem;
+  }
+
+  .appointments-option-desc {
+    font-size: 0.9rem;
+  }
+}
