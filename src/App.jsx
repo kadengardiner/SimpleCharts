@@ -15,7 +15,7 @@ import { doc, getDoc } from 'firebase/firestore'
 const base = import.meta.env.BASE_URL
 
 const tiles = [
-  { label: 'Schedule Appointment', color: '#6a9bc3', id: 'schedule', ctaImg: `${base}scheduleaptButton.png` },
+  { label: 'Appointments', color: '#6a9bc3', id: 'appointments', ctaImg: `${base}scheduleaptButton.png` },
   { label: 'Test Results', color: '#5a9e5a', id: 'results', ctaImg: `${base}testResultsclickme.png` },
   { label: 'View Medications', color: '#c8c84a', id: 'meds', ctaImg: `${base}viewMedicationClickMe.png` },
   { label: 'View Billing', color: '#c05050', id: 'billing', ctaImg: `${base}viewBillingClickMe.png` },
@@ -24,6 +24,11 @@ const tiles = [
 ]
 
 const staticPages = {
+  appointments: {
+    title: 'Appointments',
+    description: 'Choose whether to schedule a new appointment or cancel an existing appointment.',
+    keywords: ['appointment', 'appointments', 'schedule appointment', 'cancel appointment', 'book visit', 'cancel visit']
+  },
   profile: {
     title: 'Profile',
     description: 'Access and edit your saved profile information.',
@@ -48,6 +53,29 @@ function Tile({ label, color, ctaImg, onClick }) {
       <span className="tile-arrow">↓</span>
       <img className="tile-cta-img" src={ctaImg} alt={label} />
     </button>
+  )
+}
+
+function AppointmentMenu({ onSchedule, onCancel }) {
+  return (
+    <div className="appointments-menu-page">
+      <div className="appointments-menu-header">
+        <h1 className="appointments-menu-title">Appointments</h1>
+        <p className="appointments-menu-subtitle">Choose what you need help doing today.</p>
+      </div>
+      <div className="appointments-menu-grid">
+        <button className="appointments-option-card appointments-option-schedule" onClick={onSchedule}>
+          <span className="appointments-option-title">Schedule Appointment</span>
+          <span className="appointments-option-desc">Book a new visit, choose a provider, pick a time, and confirm the appointment.</span>
+          <span className="appointments-option-arrow">→</span>
+        </button>
+        <button className="appointments-option-card appointments-option-cancel" onClick={onCancel}>
+          <span className="appointments-option-title">Cancel Appointment</span>
+          <span className="appointments-option-desc">Find an existing appointment, review cancellation details, and confirm the cancellation.</span>
+          <span className="appointments-option-arrow">→</span>
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -215,18 +243,27 @@ function App() {
           ? <h1 className="greeting">Hello {username}!</h1>
           : showGuideHeader
             ? <div className="header-guide-actions">
-              <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
-              {currentPage !== 'search-results' && (
+              <button type="button" className="header-home-btn" onClick={() => navigateTo('home')} title="Go Home" aria-label="Go Home">
+                <img src={`${base}Home_icon.svg`} alt="" />
+                <span>Home</span>
+              </button>
+              {currentPage !== 'search-results' && guidePageData[currentPage] && (
                 <MyChartsLink
                   pageId={currentPage}
                   imgSrc={`${base + guidePageData[currentPage].symbol}.svg`}
-                  label={tiles[guidePageData[currentPage].symbol - 1].label}
+                  label={guidePageData[currentPage].linkLabel || guidePageData[currentPage].title.replace('How to ', '')}
                 />
               )}
               <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
             </div>
-            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />}
-        {['profile','phonebook','addressbook'].includes(currentPage) && (
+            : <div className="header-ref-actions">
+                <button type="button" className="header-home-btn" onClick={() => navigateTo('home')} title="Go Home" aria-label="Go Home">
+                  <img src={`${base}Home_icon.svg`} alt="" />
+                  <span>Home</span>
+                </button>
+                <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
+              </div>}
+        {currentPage !== 'home' && (
           <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
         )}
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />}
@@ -257,6 +294,7 @@ function App() {
 
       {menuOpen && (
         <div className="mobile-dropdown">
+          <SidebarButton label="Home" icon={`${base}Home_icon.svg`} onClick={() => navigateTo('home')} />
           <SidebarButton label="Click to Access Profile" icon={`${base}Profile.svg`} onClick={() => navigateTo('profile')} />
           <SidebarButton label="Click to Access Phone book" icon={`${base}Phone_book.svg`} iconClass="sidebar-icon-address" onClick={() => navigateTo('phonebook')} />
           <SidebarButton label="Click to Access Address book" icon={`${base}Address_book.svg`} iconClass="sidebar-icon-address" onClick={() => navigateTo('addressbook')} />
@@ -267,7 +305,9 @@ function App() {
         <div className={currentPage === 'home' ? 'tile-grid' : 'page-stage'}>
           {currentPage === 'home'
             ? tiles.map((t) => <Tile key={t.id} label={t.label} color={t.color} ctaImg={t.ctaImg} onClick={() => navigateTo(t.id)} />)
-            : currentPage === 'profile'
+            : currentPage === 'appointments'
+              ? <AppointmentMenu onSchedule={() => navigateTo('schedule')} onCancel={() => navigateTo('cancel')} />
+              : currentPage === 'profile'
               ? <ProfileScreen uid={user.uid} onLogout={() => signOut(auth)} />
               : currentPage === 'phonebook'
                 ? <PhoneBookScreen uid={user.uid} />
@@ -281,6 +321,7 @@ function App() {
                         ? <GuidePage
                           page={guidePageData[currentPage]}
                           onBack={goBack}
+                          onGoHome={() => navigateTo('home')}
                           onOpenProfile={() => navigateTo('profile')}
                           onOpenPhonebook={() => navigateTo('phonebook')}
                           onOpenAddressbook={() => navigateTo('addressbook')}

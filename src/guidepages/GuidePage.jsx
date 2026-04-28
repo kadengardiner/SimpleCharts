@@ -1,7 +1,7 @@
 import { useState } from 'react';
 const base = import.meta.env.BASE_URL
 
-export default function GuidePage({ page, onBack }) {
+export default function GuidePage({ page, onBack, onGoHome }) {
   const [checkedSteps, setCheckedSteps] = useState(Array(page.steps.length).fill(false));
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [showStepHelp, setShowStepHelp] = useState(false);
@@ -139,15 +139,6 @@ export default function GuidePage({ page, onBack }) {
             </div>
           </div>
 
-          <div className="guide-step-card-footer">
-            <button
-              type="button"
-              className="guide-help-toggle"
-              onClick={() => setShowStepHelp(v => !v)}
-            >
-              {showStepHelp ? '▲ Hide Help' : '? Need Help'}
-            </button>
-          </div>
         </div>
 
         {/* Inline help panel */}
@@ -157,8 +148,15 @@ export default function GuidePage({ page, onBack }) {
           </div>
         )}
 
-        {/* Bottom bar — print button */}
+        {/* Bottom bar — help toggle + print button */}
         <div className="guide-bottom-bar">
+          <button
+            type="button"
+            className="guide-help-toggle"
+            onClick={() => setShowStepHelp(v => !v)}
+          >
+            {showStepHelp ? '▲ Hide Help' : '? Need Help'}
+          </button>
           <button type="button" className="guide-print-button" onClick={() => window.print()}>
             <img src={`${base}printbtn.jpg`} alt="" className="guide-print-icon" />
             <span>Print Page</span>
@@ -176,7 +174,7 @@ export default function GuidePage({ page, onBack }) {
                 <button
                   type="button"
                   className="guide-completion-btn guide-completion-btn-home"
-                  onClick={onBack}
+                  onClick={onGoHome || onBack}
                 >
                   ← Back to Home
                 </button>
