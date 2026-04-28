@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+
+
 /* ── Auth Screen ── */
 .auth-screen {
   min-height: 100vh;
@@ -114,6 +116,7 @@
   --ViewMessages: #d4844a;
   --ViewAppts: #c060b0;
   --LogoColor: #8B0000;
+  font-size: 16px;
 }
 
 * {

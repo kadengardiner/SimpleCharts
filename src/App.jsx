@@ -233,7 +233,6 @@ function App() {
         <div className="header-right">
           <div>
             <img className="accessibility-settings" src={`${base}access.svg`} onClick={() => navigateTo('accessibility')} />
-            <img className="help-button" src={`${base}help.svg`} onClick={() => window.alert("NOBODY CAN HELP YOU NOW\n(not yet implemented)")} />
           </div>
           <form onSubmit={handleSearchSubmit}>
             <input
