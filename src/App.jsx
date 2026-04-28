@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import ProfileScreen from './ProfileScreen'
 import PhoneBookScreen from './PhoneBookScreen'
@@ -7,6 +7,10 @@ import GuidePage from './guidepages/GuidePage'
 import guidePageData from './guidepages/guidePageData'
 import MyChartsLink from './mychartsPortal/MyChartsLink'
 import AccessibilityOptions from './Accessibility'
+import AuthScreen from './AuthScreen'
+import { auth, db } from './firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { doc, getDoc } from 'firebase/firestore'
 
 const base = import.meta.env.BASE_URL
 
@@ -94,12 +98,27 @@ function SearchResults({ query, results, onOpenResult }) {
 }
 
 function App() {
+  const [user, setUser] = useState(undefined) // undefined = loading, null = logged out
+  const [username, setUsername] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState('home')
   const [pageHistory, setPageHistory] = useState([])
   const [searchInput, setSearchInput] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      setUser(firebaseUser)
+      if (firebaseUser) {
+        const snap = await getDoc(doc(db, 'users', firebaseUser.uid, 'profile', 'data'))
+        if (snap.exists()) setUsername(snap.data().username)
+      } else {
+        setUsername('')
+      }
+    })
+    return unsubscribe
+  }, [])
 
   const searchIndex = useMemo(() => {
     const guideEntries = Object.entries(guidePageData).map(([id, page]) => ({
@@ -167,29 +186,13 @@ function App() {
           const keywordMatched = keywordList.some((keyword) => keyword.includes(term) || term.includes(keyword))
           const textMatched = entry.text.includes(term)
 
-          if (keywordMatched) {
-            score += 7
-            matchedTerms.add(term)
-          }
-          if (titleMatched) {
-            score += 5
-            matchedTerms.add(term)
-          }
-          if (descriptionMatched) {
-            score += 3
-            matchedTerms.add(term)
-          }
-          if (textMatched) {
-            score += 1
-            matchedTerms.add(term)
-          }
+          if (keywordMatched) { score += 7; matchedTerms.add(term) }
+          if (titleMatched)   { score += 5; matchedTerms.add(term) }
+          if (descriptionMatched) { score += 3; matchedTerms.add(term) }
+          if (textMatched)    { score += 1; matchedTerms.add(term) }
         }
 
-        return {
-          ...entry,
-          score,
-          matchedTerms: Array.from(matchedTerms),
-        }
+        return { ...entry, score, matchedTerms: Array.from(matchedTerms) }
       })
       .filter((entry) => entry.score > 0)
       .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
@@ -199,6 +202,9 @@ function App() {
     navigateTo('search-results')
   }
 
+  if (user === undefined) return null
+  if (user === null) return <AuthScreen />
+
   const isGuidePage = !!guidePageData[currentPage]
   const showGuideHeader = isGuidePage || currentPage === 'search-results'
 
@@ -206,7 +212,7 @@ function App() {
     <div className="app">
       <header className="header">
         {currentPage === 'home'
-          ? <h1 className="greeting">Hello John Smith!</h1>
+          ? <h1 className="greeting">Hello {username}!</h1>
           : showGuideHeader
             ? <div className="header-guide-actions">
               <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
@@ -219,11 +225,10 @@ function App() {
               )}
               <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
             </div>
-            : <div className="header-ref-actions"> 
-                <img className="header-logo-left" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
-                <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />
-              </div>
-            }
+            : <img className="header-action-btn" src={`${base}backbtn.png`} alt="Back" onClick={goBack} title='Go to Previous Page' />}
+        {['profile','phonebook','addressbook'].includes(currentPage) && (
+          <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />
+        )}
         {currentPage === 'home' && <img className="header-logo" src={`${base}logo.png`} alt="Simple Charts Logo" onClick={() => navigateTo('home')} />}
         <div className="header-right">
           <div>
@@ -240,6 +245,14 @@ function App() {
             />
           </form>
         </div>
+        {currentPage !== 'home' && (
+          <img
+            className="mobile-logo"
+            src={`${base}logo.png`}
+            alt="Simple Charts"
+            onClick={() => navigateTo('home')}
+          />
+        )}
         <button className="mobile-menu-btn" onClick={() => setMenuOpen(o => !o)}>☰ Menu</button>
       </header>
 
@@ -256,22 +269,22 @@ function App() {
           {currentPage === 'home'
             ? tiles.map((t) => <Tile key={t.id} label={t.label} color={t.color} ctaImg={t.ctaImg} onClick={() => navigateTo(t.id)} />)
             : currentPage === 'profile'
-              ? <ProfileScreen onBack={goBack} />
+              ? <ProfileScreen uid={user.uid} onLogout={() => signOut(auth)} />
               : currentPage === 'phonebook'
-                ? <PhoneBookScreen onBack={goBack} />
+                ? <PhoneBookScreen uid={user.uid} />
                 : currentPage === 'addressbook'
-                  ? <AddressBookScreen onBack={goBack} />
+                  ? <AddressBookScreen uid={user.uid} />
                   : currentPage === 'accessibility'
                     ? <AccessibilityOptions onBack={goBack} />
                     : currentPage === 'search-results'
-                        ? <SearchResults query={searchQuery} results={searchResults} onOpenResult={navigateTo} />
-                        : isGuidePage
+                      ? <SearchResults query={searchQuery} results={searchResults} onOpenResult={navigateTo} />
+                      : isGuidePage
                         ? <GuidePage
-                            page={guidePageData[currentPage]}
-                            onBack={goBack}
-                            onOpenProfile={() => navigateTo('profile')}
-                            onOpenPhonebook={() => navigateTo('phonebook')}
-                            onOpenAddressbook={() => navigateTo('addressbook')}
+                          page={guidePageData[currentPage]}
+                          onBack={goBack}
+                          onOpenProfile={() => navigateTo('profile')}
+                          onOpenPhonebook={() => navigateTo('phonebook')}
+                          onOpenAddressbook={() => navigateTo('addressbook')}
                         />
                         : null}
         </div>

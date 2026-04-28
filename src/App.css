@@ -1,5 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+/* ── Auth Screen ── */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0eeec;
+  font-family: 'Poppins', sans-serif;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  color: #777;
+  margin: 0 0 12px;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  border-color: #6a9bc3;
+}
+
+.auth-error {
+  color: #c05050;
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background: #6a9bc3;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: filter 0.15s, transform 0.15s;
+}
+
+.auth-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.auth-switch {
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #6a9bc3;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 4px;
+}
+
+.auth-switch:hover {
+  color: #4a7aa3;
+}
+
 :root {
   --ScheduleAppt: #6a9bc3;
   --TestResults: #5a9e5a;
@@ -290,6 +396,10 @@ body {
 }
 
 /* ── Mobile ── */
+.mobile-logo {
+  display: none;
+}
+
 .mobile-menu-btn {
   display: none;
 }
@@ -330,6 +440,16 @@ body {
 
   .header-right {
     display: none;
+  }
+
+  .mobile-logo {
+    display: block;
+    height: 38px;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
   }
 
   .mobile-menu-btn {

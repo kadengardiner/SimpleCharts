@@ -1,59 +1,70 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HospitalPicker from './mychartsPortal/HospitalPicker';
 import useMyChartsUrl from './mychartsPortal/useMyChartsUrl';
+import { db } from './firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ uid, onLogout }) {
   const { saveHospital } = useMyChartsUrl()
 
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState({
-    email: 'johnsmith@gmail.com',
-    password: 'mypassword123',
-    name: 'John Smith',
+    email: '',
+    username: '',
     hospitalId: localStorage.getItem('mychartsHospitalId') || '',
   });
   const [draft, setDraft] = useState({ ...saved });
   const [draftHospitalId, setDraftHospitalId] = useState(saved.hospitalId)
 
-  function handleEdit() {
-    setDraft({ ...saved });
-    setDraftHospitalId(saved.hospitalId)
-    setIsEditing(true);
-  }
+  useEffect(() => {
+    async function load() {
+      const snap = await getDoc(doc(db, 'users', uid, 'profile', 'data'))
+      if (snap.exists()) {
+        const data = snap.data()
+        const loaded = {
+          email: data.email || '',
+          username: data.username || '',
+          hospitalId: localStorage.getItem('mychartsHospitalId') || '',
+        }
+        setSaved(loaded)
+        setDraft(loaded)
+        setDraftHospitalId(loaded.hospitalId)
+      }
+      setLoading(false)
+    }
+    load()
+  }, [uid])
 
-  function handleSave() {
+  async function handleSave() {
+    await updateDoc(doc(db, 'users', uid, 'profile', 'data'), {
+      username: draft.username,
+      email: draft.email,
+    })
     saveHospital(draftHospitalId)
     setSaved({ ...draft, hospitalId: draftHospitalId });
     setIsEditing(false);
   }
+
+  if (loading) return <div className="profile-screen"><p>Loading…</p></div>
 
   return (
     <div className="profile-screen">
       <h1 className="profile-title">SimpleCharts Profile Settings</h1>
 
       <div className="profile-feild">
+        <label>Username:</label>
+        {isEditing
+          ? <input type="text" value={draft.username} onChange={e => setDraft({ ...draft, username: e.target.value })} />
+          : <span className="profile-value">{saved.username}</span>}
+      </div>
+
+      <div className="profile-feild">
         <label>Account Email:</label>
         {isEditing
           ? <input type="email" value={draft.email} onChange={e => setDraft({ ...draft, email: e.target.value })} />
           : <span className="profile-value">{saved.email}</span>}
-      </div>
-
-      <div className="profile-feild">
-        <label>Account Password:</label>
-        {isEditing
-          ? <input type={showPassword ? 'text' : 'password'} value={draft.password} onChange={e => setDraft({ ...draft, password: e.target.value })} />
-          : <span className="profile-value">{showPassword ? saved.password : '•'.repeat(saved.password.length)}</span>}
-        <button className="show-password-btn" onClick={() => setShowPassword(s => !s)}>
-          {showPassword ? 'Hide' : 'Show'}
-        </button>
-      </div>
-
-      <div className="profile-feild">
-        <label>Account Holder Name:</label>
-        {isEditing
-          ? <input type="text" value={draft.name} onChange={e => setDraft({ ...draft, name: e.target.value })} />
-          : <span className="profile-value">{saved.name}</span>}
       </div>
 
       <HospitalPicker
@@ -70,11 +81,11 @@ export default function ProfileScreen() {
             <button className="profile-cancel-btn" onClick={() => setIsEditing(false)}>Cancel</button>
           </>
         ) : (
-          <button className="profile-edit-btn" onClick={handleEdit}>Edit</button>
+          <button className="profile-edit-btn" onClick={() => { setDraft({ ...saved }); setIsEditing(true); }}>Edit</button>
         )}
       </div>
 
-      <button className="logout-btn">Logout</button>
+      <button className="logout-btn" onClick={onLogout}>Logout</button>
     </div>
   );
 }
