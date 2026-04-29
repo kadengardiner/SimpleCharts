@@ -76,7 +76,7 @@ export default function GuidePage({ page, onBack, onGoHome }) {
         <h1 className="guide-title">{page.title}</h1>
 
         {/* Progress row */}
-        <div className="guide-progress-row">
+        <div className="guide-progress-row print-hidden">
           <button
             className={`guide-tts-button ${isSpeaking ? 'is-speaking' : ''}`}
             onClick={() => isSpeaking ? stopSpeaking() : speak(currentStepText)}
@@ -108,7 +108,7 @@ export default function GuidePage({ page, onBack, onGoHome }) {
         </div>
 
         {/* Step instruction card */}
-        <div className="guide-step-card">
+        <div className="guide-step-card print-hidden">
           <div className="guide-step-card-number">{currentStepNumber}</div>
           <p className="guide-step-card-text">{currentStepText}</p>
 
@@ -149,7 +149,7 @@ export default function GuidePage({ page, onBack, onGoHome }) {
         )}
 
         {/* Bottom bar — help toggle + print button */}
-        <div className="guide-bottom-bar">
+        <div className="guide-bottom-bar print-hidden">
           <button
             type="button"
             className="guide-help-toggle"
@@ -190,16 +190,16 @@ export default function GuidePage({ page, onBack, onGoHome }) {
           </div>
         )}
 
-        {/* Hidden print card */}
-        <div className="guide-detail-card-print">
+
+      </div>
+      {/* Hidden print card */}
+      <div className="guide-detail-card-print">
           {Object.entries(page.details).map(([step, detail], index) => (
             <div className="guide-detail-print-container" key={'print-step' + index}>
               <div className="guide-detail-title" key={'print-title' + index}>Step {step}:</div>
               <div className="guide-detail-text" key={'print-text' + index}>{detail}</div>
             </div>
           ))}
-        </div>
-
       </div>
     </div>
   );

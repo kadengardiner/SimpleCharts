@@ -359,20 +359,34 @@ body {
   transition: transform 0.2s ease;
 }
 
-.tile-cta-img {
-  width: 60%;
+.tile-cta-button {
+  /* width: 60%; */
+  text-transform: uppercase;
+  font-size: 2rem;
+  padding: 15px;
   display: block;
   margin: 0 auto;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
+  font-style: italic;
+  color: black;
+  background-color: #ffffff88;
+  background-blend-mode: overlay;
   border-radius: 16px;
   transition: transform 0.2s ease;
 }
 
-.tile-cta-img:hover {
-  transform: scale(1.04);
+.tile-cta-button img {
+    height: 2rem;
+    margin-left: 10px;
+    translate: 0 20%;
 }
 
-.tile:has(.tile-cta-img:hover) .tile-arrow {
+.tile-cta-button:hover {
+  transform: scale(1.04);
+  outline: 3px solid black;
+}
+
+.tile:has(.tile-cta-button:hover) .tile-arrow {
   transform: scale(1.04);
 }
 
@@ -606,7 +620,7 @@ body {
     font-size: 0.6rem;
   }
 
-  .tile-cta-img {
+  .tile-cta-button {
     width: 55%;
     height: 14vw;
     object-fit: fill;
@@ -768,6 +782,17 @@ body {
 
 .book-add-btn:hover {
   filter: brightness(1.1);
+}
+
+.accessibility {
+    text-align: center;
+}
+
+.size-button {
+    font-size: 1.5rem;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
 }
 
 @media (max-width: 600px) {

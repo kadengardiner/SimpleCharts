@@ -15,12 +15,12 @@ import { doc, getDoc } from 'firebase/firestore'
 const base = import.meta.env.BASE_URL
 
 const tiles = [
-  { label: 'Appointments', color: '#6a9bc3', id: 'appointments', ctaImg: `${base}scheduleaptButton.png` },
-  { label: 'Test Results', color: '#5a9e5a', id: 'results', ctaImg: `${base}testResultsclickme.png` },
-  { label: 'View Medications', color: '#c8c84a', id: 'meds', ctaImg: `${base}viewMedicationClickMe.png` },
-  { label: 'View Billing', color: '#c05050', id: 'billing', ctaImg: `${base}viewBillingClickMe.png` },
-  { label: 'View Messages', color: '#d4844a', id: 'messages', ctaImg: `${base}viewMessageClickMe.png` },
-  { label: 'View Upcoming Appointment', color: '#c060b0', id: 'upcoming', ctaImg: `${base}viewUpcomingAppointmentClickMe.png` },
+  { label: 'Appointments', color: '#6a9bc3', id: 'appointments', ctaImg: `${base}1.svg` },
+  { label: 'Test Results', color: '#5a9e5a', id: 'results', ctaImg: `${base}2.svg` },
+  { label: 'View Medications', color: '#c8c84a', id: 'meds', ctaImg: `${base}3.svg` },
+  { label: 'View Billing', color: '#c05050', id: 'billing', ctaImg: `${base}4.svg` },
+  { label: 'View Messages', color: '#d4844a', id: 'messages', ctaImg: `${base}5.svg` },
+  { label: 'View Upcoming Appointment', color: '#c060b0', id: 'upcoming', ctaImg: `${base}6.svg` },
 ]
 
 const staticPages = {
@@ -51,7 +51,8 @@ function Tile({ label, color, ctaImg, onClick }) {
     <button className="tile" style={{ backgroundColor: color }} onClick={onClick}>
       <span className="tile-label">{label}</span>
       <span className="tile-arrow">↓</span>
-      <img className="tile-cta-img" src={ctaImg} alt={label} />
+      <span className="tile-cta-button">Click Me<img src={ctaImg}/></span>
+      {/* <img className="tile-cta-img" src={ctaImg} alt={label} /> */}
     </button>
   )
 }

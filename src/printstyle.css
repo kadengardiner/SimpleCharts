@@ -2,7 +2,7 @@
     *{
         overflow: visible !important;
     }
-    .guide-steps-panel, .guide-detail-card-print{
+    .guide-detail-card-print{
         position: absolute !important;
         left: 0 !important;
         display: block !important;
@@ -13,16 +13,10 @@
         overflow: visible !important;
         min-height: 100% !important;
     }
-    .guide-steps-panel{
-        top: 80px;
-    }
+
     .guide-detail-card-print{
-        padding-top: 0%;
-        top: 100%;
-    }
-    .guide-steps-panel div{
-        line-height: 1 !important;
-        font-size: 1.5em;
+        margin-top: 3.5em;
+
     }
 
     .guide-detail-card-print div {
@@ -30,15 +24,12 @@
         font-size: 1.25em !important;
     }
 
-    .guide-step-number::after{
+    .guide-detail-text::before{
         content: "\25A1" !important;
-        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    .guide-step-row{
-        margin-bottom: 1.5em !important;
-    }
-    .header, .sidebar, .guide-bottom-row, .guide-grid-card, .guide-detail-card, .header-action-btn {
+    .header, .sidebar, .guide-bottom-row, .guide-grid-card, .guide-detail-card, .header-action-btn, .print-hidden{
         display: none !important;
     }
 
@@ -51,9 +42,6 @@
         text-shadow: none !important;
         color: black !important;
         font-size: 30px !important;
-    }
-    .guide-step-check{
-        visibility: hidden;
     }
 
     body{
