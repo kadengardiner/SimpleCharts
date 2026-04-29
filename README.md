@@ -39,3 +39,4 @@ To deploy to GitHub Pages:
 ```
 npm run deploy
 ```
+NOTE: To run locally you need the .env file with firebase config keys, please message Kaden Gardiner @ kadengardinercs@gmail.com for the file contents, but we advise just using our deployed website.
